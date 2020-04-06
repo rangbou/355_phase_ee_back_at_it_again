@@ -39,8 +39,18 @@ void Network::push_front(Person* newEntry){
 
 
 void Network::push_back(Person* newEntry){
-    // TODO: Complete this method!
+    // TODO: Complete this method! 
     // Adds a new Person (newEntry) to the back of LL
+    newEntry->prev = tail;
+    newEntry->next = NULL;
+
+    if (tail != NULL)
+        tail->prev = newEntry;
+    else
+        head = newEntry;
+    
+    tail = newEntry;
+    count++;
 }
 
 
