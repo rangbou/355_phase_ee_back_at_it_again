@@ -17,9 +17,20 @@ Network::Network(string fileName){
     // You may need to implement the load method before this!
 }
 
+//COMPLETED
 Network::~Network(){
     // TODO: Complete this method
     // Destructure delete all the Person
+    Person* current = head; 
+    Person* next;
+
+    while(current != NULL){
+        next = current->next;
+        delete current;
+        current = next; 
+    }
+
+    head = NULL;  
 }
 
 
