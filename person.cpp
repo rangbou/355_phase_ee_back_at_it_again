@@ -7,6 +7,8 @@
 Person::Person(){
     // I'm already done! 
     set_person();
+    prev = NULL;
+    next = NULL;
 }
 
 //COMPLETED
@@ -14,10 +16,8 @@ Person::~Person(){
     delete birthdate;
     delete email;
     delete phone;
-    delete prev;
+    delete prev; 
     delete next;
-    f_name.erase();
-    l_name.erase();
     // TODO: complete the method!
 }
 
