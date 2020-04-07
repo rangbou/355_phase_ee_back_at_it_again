@@ -42,7 +42,7 @@ void Network::push_front(Person* newEntry){
     count++;
 }
 
-//COMPLETE
+//COMPLETED
 void Network::push_back(Person* newEntry){
     // Complete : Complete this method!
     // Adds a new Person (newEntry) to the back of LL
@@ -84,7 +84,7 @@ void Network::saveDB(string filename){
     // now the one who is responsible for implementing Network should be aware of implementation of Person, not good! You will fix this in PA2. 
 }
 
-
+//COMPLETED
 void Network::loadDB(string filename){
     // Complete: Complete this method!
     // Loads the netwrok from file <filename>
