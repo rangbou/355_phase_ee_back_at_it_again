@@ -50,7 +50,7 @@ void Network::push_front(Person* newEntry){
 
 
 void Network::push_back(Person* newEntry){
-    // Complete TODO: Complete this method!
+    // Complete : Complete this method!
     // Adds a new Person (newEntry) to the back of LL
     // TODO: Test
     newEntry->prev = tail;
@@ -92,7 +92,7 @@ void Network::saveDB(string filename){
 
 
 void Network::loadDB(string filename){
-    // TODO: Complete this method!
+    // Complete: Complete this method!
     // Loads the netwrok from file <filename>
     // The format of the input file is similar to saveDB
     // Look at network studentDB.txt as a template
@@ -111,21 +111,29 @@ void Network::loadDB(string filename){
     ifstream infile;
     infile.open(filename.c_str());
     string buff, fname, lname, bdate;
-    
+
     // TODO: Decalre other vairiable if needed
+    string type_em, type_ph, email, phone;
 
     while(getline(infile, buff)){
         lname = buff.substr(0, buff.find(','));
         fname = buff.substr(buff.find(',')+2);
         getline(infile, bdate);
         // TODO: read email and phone
-        
-        // this line is to read the dash line
+        getline(infile,buff);
+        type_em = buff.substr(buff.find('(')+1 , buf.find(')'));
+        email = buff.substr(buf.find(')')+2);
+        // Reading phone number
+        getline(infile, buff);
+        type_ph = buff.substr(buff.find('(')+1 , buf.find(')'));
+        phone = buff.substr(buf.find(')')+2);
+        // This line is to read the dash line
         getline(infile, buff);
         // TODO: use the constructor Person::Person(fname, lname, bdate, email, phone) to modify the following line
-        Person* newEntry = NULL;
-        
+        Person* newEntry(fname, lname, bdate, email, phone);
+        // adding to linked list. increase count.
         this->push_back(newEntry);
+        count++;
     }
 }
 

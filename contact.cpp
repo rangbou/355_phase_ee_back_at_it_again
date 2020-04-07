@@ -1,5 +1,6 @@
-#include "contact.h" 
+#include "contact.h"
 // TODO: Add needed libraries! 
+#define CONTACT_H
 
 Email::Email(string type, string email_addr){
     // Complete TODO: Complete me!

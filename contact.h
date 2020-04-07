@@ -7,10 +7,11 @@
 
 // TODO: You may need to add other libraries here!
 using namespace std;
-
+// #include "contact.cpp"
 
 class Contact {
-    // TODO: private or protected? Look at its children!	
+    // TODO: private or protected? Look at its children!
+protected:	
 	string type;
 public:
     // the following functions are pure virtual functions
