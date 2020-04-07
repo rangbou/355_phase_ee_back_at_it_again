@@ -31,8 +31,8 @@ public:
 
 class Phone: public Contact{
 private:
-    // TODO: modify dataType! Can int store 10 digit phone-number? 
-	dataType phone_num; 
+    // Completed TODO: modify dataType! Can int store 10 digit phone-number? 
+	string phone_num; 
 public:
     Phone(string type, string phone_number);
     // TODO: Complete me!
