@@ -43,12 +43,8 @@ public:
     Phone(string type, string phone_number);
     // TODO: Complete me!
     void print();
-<<<<<<< HEAD
     string get_contact(string style = "full");
     // string get_contact();
-=======
-    string get_contact(string style="full");
->>>>>>> 55e52824c06162f39581c4d7da142f2d3b38a734
     void set_contact();
 };
 
