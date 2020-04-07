@@ -9,10 +9,10 @@ int main(){
 	Phone b(type2, phone);
 	// Email(type,email) a;
 	// Phone(type,phone) b;
-	a.set_contact();
-	a.get_contact();
+	a.set_contact();	
 	b.set_contact();
-	b.get_contact();
+	
 	a.print();
+
 	b.print();
 }
