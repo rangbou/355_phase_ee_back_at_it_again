@@ -14,8 +14,9 @@ Person::~Person(){
     delete birthdate;
     delete email;
     delete phone;
-    delete prev; 
-    delete next;
+    //Xuejing said we didn't need to delete prev or next
+    //delete prev; 
+    //delete next;
     // TODO: complete the method!
 }
 
