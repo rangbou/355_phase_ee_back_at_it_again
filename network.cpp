@@ -187,11 +187,44 @@ void Network::showMenu(){
         string fname, lname, fileName, bdate;
         cout << "\033[2J\033[1;1H";
 
+        //COMPLETED
         if (opt==1){
             // TODO: Complete me!
             cout << "Loading network database \n";
             // TODO: print all the files in this same directory that have ".db" format
             // Take a look into sample_files.cpp 
+
+            DIR *dir;
+            struct dirent *ent;
+            char targetFolderAddr[] = "./";
+
+            if ((dir = opendir ("./")) != NULL) { 
+                int flag = 0;
+                char o = '.';
+                char d = 'd';
+                char b = 'b';
+
+                while ((ent = readdir (dir)) != NULL) {
+                string name = ent->d_name;
+                int size = name.length();
+                    if((name[size -3] == o) && (name[size -2] == d) && (name[size -1] == b)){
+                    cout << name << endl;
+                    flag = 1;
+                    }
+                }
+
+                if(flag == 0){
+                    cout << "Nothing here \n";
+                }
+
+                closedir (dir);
+            } 
+
+            else {
+            /* could not open directory */
+            perror ("No directory!");
+            }
+
             cout << "Enter the name of the load file: "; 
             // If file with name FILENAME does not exist: 
             cout << "File FILENAME does not exist!" << endl;
