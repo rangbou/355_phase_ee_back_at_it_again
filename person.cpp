@@ -89,7 +89,13 @@ void Person::set_person(string filename){
     string temp;
     string type;
 
-    ifstream myfile(filename);
+    //from geeksforgeeks
+    int size = filename.length();
+    char char_filename[size + 1];
+    strcpy(char_filename, filename.c_str());
+
+    ifstream myfile(char_filename);
+    getline(myfile, f_name);
     getline(myfile, f_name);
     getline(myfile, l_name);
     getline(myfile, temp);
