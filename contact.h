@@ -27,6 +27,9 @@ private:
 public:
     Email(string type, string email_addr);
     // TODO: Complete me!
+    void print();
+    string get_contact(string style);
+    void set_contact();
 };
 
 
@@ -37,6 +40,9 @@ private:
 public:
     Phone(string type, string phone_number);
     // TODO: Complete me!
+    void print();
+    string get_contact(string style);
+    void set_contact();
 };
 
 #endif
