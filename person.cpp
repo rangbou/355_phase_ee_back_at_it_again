@@ -38,11 +38,16 @@ Person::Person(string fname, string lname, string bdate, string email1, string p
     stringstream read_phone(phone1);
     read_phone >> type >> temp;
     phone = new Phone(type,temp);
+
+    prev = NULL;
+    next = NULL;
 }
 
 
 Person::Person(string filename){
     set_person(filename);
+    prev = NULL;
+    next = NULL;
 }
 
 // COMPLETED
@@ -98,7 +103,6 @@ void Person::set_person(string filename){
 
     ifstream myfile(char_filename);
     getline(myfile, f_name);
-    getline(myfile, f_name);
     getline(myfile, l_name);
     getline(myfile, temp);
 
@@ -110,6 +114,7 @@ void Person::set_person(string filename){
     myfile >> type >> temp;
     email = new Email(type, temp);
 
+    myfile.close();
 }
 
 //COMPLETED
