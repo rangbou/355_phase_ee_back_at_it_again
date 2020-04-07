@@ -22,10 +22,13 @@ void Email::set_contact(){
 string Email::get_contact(string style){
     // Note: We have default argument in declaration and not in definition!
     // emaple: Email (USC): tommytrojan@usc.edu
-    if (style=="full")
-	    return "Email (" + type + "): " + email_addr;
-    else 
-        return email_addr;
+    if(email_addr.size()>0){if (style=="full")
+          return "Email (" + type + "): " + email_addr;
+        else 
+            return email_addr;}
+    else{
+      return "No email available";
+    }
 }
 
 
@@ -76,13 +79,19 @@ string Phone::get_contact(string style){
     // TODO: Complete this method, get hint from Email 
     // follow the format of this example: Phone (Office): 310-192-2847
 
-     // Note: Modify the following code can help you implementing this function
-     // * This code has a bug, can you understand it？
-    string phone_num_formatted = phone_num.substr(0,3)+ "-"+phone_num.substr(2,3)+"-"+phone_num.substr(5,4);
-    if (style=="full")
-	    return "Phone (" + type + "): " + phone_num_formatted;
-    else 
-        return phone_num_formatted; 
+      // if/else implemented to anticipate short phone number.
+      if(phone_num.size() < 9){
+        return "No number available";
+      }
+      else{
+        string phone_num_formatted = phone_num.substr(0,3)+ "-"+phone_num.substr(2,3)+"-"+phone_num.substr(5,4);
+        if (style=="full"){
+          return "Phone (" + type + "): " + phone_num_formatted;
+        }
+        else{
+          return phone_num_formatted;
+        } 
+      }
 }
 
 
