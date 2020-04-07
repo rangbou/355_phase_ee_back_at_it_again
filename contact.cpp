@@ -82,7 +82,7 @@ string Phone::get_contact(string style){
     if (style=="full")
 	    return "Phone (" + type + "): " + phone_num_formatted;
     else 
-        return phone_num_formatted;
+        return phone_num_formatted; 
 }
 
 

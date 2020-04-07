@@ -13,4 +13,6 @@ int main(){
 	a.get_contact();
 	b.set_contact();
 	b.get_contact();
+	a.print();
+	b.print();
 }

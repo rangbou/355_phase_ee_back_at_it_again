@@ -29,8 +29,7 @@ public:
     Email(string type, string email_addr);
     // TODO: Complete me!
     void print();
-    string get_contact(string style);
-    string get_contact();
+    string get_contact(string style="full");
     void set_contact();
 };
 
@@ -43,8 +42,7 @@ public:
     Phone(string type, string phone_number);
     // TODO: Complete me!
     void print();
-    string get_contact(string style);
-    string get_contact();
+    string get_contact(string style="full");
     void set_contact();
 };
 
