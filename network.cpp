@@ -10,27 +10,21 @@ Network::Network(){
     count = 0;
 }
 
-
+//COMPLETED
 Network::Network(string fileName){
     // TODO: complete this method!
     // Implement it in one single line!
     // You may need to implement the load method before this!
+    loadDB(string filename);
+
 }
 
 //COMPLETED
 Network::~Network(){
     // TODO: Complete this method
     // Destructure delete all the Person
-    Person* current = head; 
-    Person* next;
-
-    while(current != NULL){
-        next = current->next;
-        delete current;
-        current = next; 
-    }
-
-    head = NULL;  
+    delete head;
+    delete tail;
 }
 
 
@@ -48,7 +42,7 @@ void Network::push_front(Person* newEntry){
     count++;
 }
 
-
+//COMPLETE
 void Network::push_back(Person* newEntry){
     // Complete : Complete this method!
     // Adds a new Person (newEntry) to the back of LL
