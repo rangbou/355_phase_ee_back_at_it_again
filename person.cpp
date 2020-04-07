@@ -1,6 +1,8 @@
 
 #include "person.h"
 #include <bits/stdc++.h> 
+#include "date.h"
+#include "contact.h"
 
 Person::Person(){
     // I'm already done! 
