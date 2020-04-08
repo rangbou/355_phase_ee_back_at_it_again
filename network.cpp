@@ -15,7 +15,7 @@ Network::Network(string fileName){
     // TODO: complete this method!
     // Implement it in one single line!
     // You may need to implement the load method before this!
-    loadDB(string filename);
+    loadDB(string fileName);
     head = NULL;
     tail = NULL;
     count = 0;
@@ -173,6 +173,7 @@ bool Network::remove(string fname, string lname, string bdate){
     // Search if this person exists using search method. If it does not exist just return false! Else, remove the person from LL, make the other connections connected
     // Don't forget to delete allocated memory, change count and returning values!
 
+
 }
 
 void Network::showMenu(){
@@ -247,7 +248,6 @@ void Network::showMenu(){
             else {
             /* could not open directory */
             perror ("No directory!");
-            return 1;
             }
 
             cout << "Enter the name of the load file: ";
@@ -370,7 +370,7 @@ void Network::showMenu(){
                 cout << "Person not found!\n";
             }
             else{
-                cout << "Remove Sucessful!\n"
+                cout << "Remove Sucessful!\n";
             }
 
         }
