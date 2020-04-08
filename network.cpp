@@ -264,7 +264,6 @@ void Network::showMenu(){
                 loadDB(fileName);
                 cout << "Network loaded from " << fileName << " with " << count << " persons \n";
             }
-            
         }
 
         //COMPLETED
@@ -328,60 +327,7 @@ void Network::showMenu(){
                 cout << "Adding a new person \n";
             }
 
-            else if(exist = 0){
-                cout << "Person already exists\n";
-            }
-        }
 
-        //COMPLETED
-        else if (opt == 4){
-            // TODO: Complete me!
-            cout << "Searching: \n";
-            cout << "First Name: ";
-            cin >> fname;
-            cout << "Last Name: ";
-            cin >> lname;
-            cout << "Birthdate (M/D/YYYY): ";
-            cin >> bdate;
-            // if found: print person's firstname, lastname, bdate, email, phone using print_person()
-            // if not, cout << "Not found! \n";
-            search_result = search(fname,lname,bdate);
-            if(search_result == NULL){
-                cout << "Not found! \n";
-            }
-            else{
-                search_result->print_person();
-            }
-        }
-
-        //COMPLETED    
-        else if (opt==5){
-            // TODO: Complete me!
-            cout << "Removing a person \n";
-            cout << "First name: ";
-            cin >> fname;
-            cout << "Last name: ";
-            cin >> lname;
-            cout << "Birthdate (M/D/YYYY): ";
-            cin >> bdate;
-            // if found, cout << "Remove Successful! \n";
-            // if not found: cout << "Person not found! \n";
-            remove_result = remove(fname,lname,bdate);
-            if(remove_result = 0){
-                cout << "Person not found!\n";
-            }
-            else{
-                cout << "Remove Sucessful!\n";
-            }
-
-        }
-        else if (opt==6){
-            // TODO: Complete me!
-            cout << "Network Database: \n";
-
-        }
-        else
-            cout << "Nothing matched!\n";
         
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
