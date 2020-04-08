@@ -4,6 +4,7 @@
 
 #include "person.h"
 #include "date.h"
+#include <dirent.h>
 // You may need to add more libraries 
 #include <stdlib.h>
 class Network{
