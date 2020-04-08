@@ -24,7 +24,7 @@ Network::Network(string fileName){
 //COMPLETED
 Network::~Network(){
     // TODO: Complete this method
-    Destructure delete all the Person
+    //Destructure delete all the Person
     Person* current = head; 
     Person* next;
 
