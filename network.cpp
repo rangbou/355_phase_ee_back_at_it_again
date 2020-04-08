@@ -307,7 +307,7 @@ void Network::showMenu(){
 
                     if(user_option == "manual"){
                         flag = 0;
-                        Person newPersonm_man;
+                        Person newPerson_man;
                         push_front(&newPerson_man);
                     }
 
