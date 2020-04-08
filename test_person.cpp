@@ -14,6 +14,6 @@ int main(){
     cout << "Is c1 equal to c2: " << (c1==c2) << endl;
     cout << "Is c1 not equal to c2: " << (c1!=c2) << endl; 
 
-
+    cout << "------Test get_person()-------\n"<< c1.get_person()<< endl;
     return 0;
 }

@@ -29,6 +29,7 @@ public:
 	void set_person(string filename);
     bool operator==(const Person& rhs);
     bool operator!=(const Person& rhs);
+    string get_person();
 };
 
 

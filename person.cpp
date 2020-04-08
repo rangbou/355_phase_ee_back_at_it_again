@@ -150,3 +150,8 @@ void Person::print_person(){
     phone->print();
 }
 
+// Implementation for saveDB in network.cpp
+string Person::get_person(){
+    return l_name + ", " + f_name + "\n" + birthdate->get_date() +"\n"+ email->get_contact()+"\n"+ phone->get_contact()+ "\n--------------------\n";
+} 
+

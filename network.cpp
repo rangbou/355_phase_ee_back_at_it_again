@@ -15,7 +15,7 @@ Network::Network(string fileName){
     // TODO: complete this method!
     // Implement it in one single line!
     // You may need to implement the load method before this!
-    loadDB(string filename);
+    loadDB(fileName);
 
 }
 
@@ -76,17 +76,36 @@ void Network::printDB(){
 
 
 void Network::saveDB(string filename){
-    // TODO: Complete this method!
+    // TODO: Test
     // Saves the netwrok in file <filename>
     // Note: The format of the output file is very abstract, just raw data
     // Look at studentDB.db as a template
     // Note: notice the intentional flaw in this code, as compared to the note mentioned in printDB, 
     // now the one who is responsible for implementing Network should be aware of implementation of Person, not good! You will fix this in PA2. 
+
+    // Possible use of iterator?
+    ofstream write;
+    write.open(filename.c_str());
+    if(write.is_open()){
+        Person *current;
+        for(int i = 0; i < count; i++ ){
+            if(i == 0){
+                current = this->head;
+            }
+            else{
+                current = current->next;
+            }
+        write << current->get_person();
+        }
+    }
+    else{
+        cout << "Could not open write file."<< endl;
+    }
 }
 
 //COMPLETED
 void Network::loadDB(string filename){
-    // Complete: Complete this method!
+    // TODO: Test
     // Loads the netwrok from file <filename>
     // The format of the input file is similar to saveDB
     // Look at network studentDB.txt as a template
@@ -115,18 +134,18 @@ void Network::loadDB(string filename){
         getline(infile, bdate);
         // TODO: read email and phone
         getline(infile,buff);
-        type_em = buff.substr(buff.find('(')+1 , buf.find(')'));
-        email = buff.substr(buf.find(')')+2);
+        type_em = buff.substr(buff.find('(')+1 , buff.find(')'));
+        email = buff.substr(buff.find(')')+2);
         // Reading phone number
         getline(infile, buff);
-        type_ph = buff.substr(buff.find('(')+1 , buf.find(')'));
-        phone = buff.substr(buf.find(')')+2);
+        type_ph = buff.substr(buff.find('(')+1 , buff.find(')'));
+        phone = buff.substr(buff.find(')')+2);
         // This line is to read the dash line
         getline(infile, buff);
         // TODO: use the constructor Person::Person(fname, lname, bdate, email, phone) to modify the following line
-        Person* newEntry(fname, lname, bdate, email, phone);
+        Person newEntry(fname, lname, bdate, email, phone);
         // adding to linked list. increase count.
-        this->push_back(newEntry);
+        this->push_back(&newEntry);
         count++;
     }
 }

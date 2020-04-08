@@ -11,8 +11,6 @@ int main(){
 	// Phone(type,phone) b;
 	a.set_contact();	
 	b.set_contact();
-	
 	a.print();
-
 	b.print();
 }
