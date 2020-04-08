@@ -187,7 +187,7 @@ void Network::showMenu(){
         string fname, lname, fileName, bdate;
         cout << "\033[2J\033[1;1H";
 
-        //COMPLETED
+        //NOT COMPLETED
         if (opt==1){
             // TODO: Complete me!
             cout << "Loading network database \n";
@@ -232,18 +232,69 @@ void Network::showMenu(){
             cout << "Network loaded from " << fileName << " with " << count << " persons \n";
             
         }
+
+        //COMPLETED?
         else if (opt==2){
             // TODO: Complete me!
             cout << "Saving network database \n";
             cout << "Enter the name of the save file: ";
+            cin >> fileName;
+            saveDB(fileName);
             cout << "Network saved in " << fileName << endl;
         }
+
+        //COMPLETED
         else if (opt == 3){
             // TODO: Complete me!
             // TODO: use push_front, and not push_back 
             // Add a new person ONLY if it does not exists!
-            cout << "Adding a new person \n";
+            string user_option;
+            int flag = 1;
+            int exist;
+            while(flag>0){
+                cout << "Enter 'manual' or 'filename'\n";
+                cin >> user_option;
+
+                if(user_option == "manual"){
+                    flag = 0;
+                    Person newPersonm_man;
+                    if(search(FILL) == NULL){
+                        exist = 1;
+                    push_front(&newPerson_man);
+                    }
+                    else{
+                        exist = 0;
+                    }
+                }
+
+                else if(user_option == "filename"){
+                    flag = 0;
+                    cout << "What is the full filename?\n";
+                    cin >> fileName;
+                    Person newPerson_fil(fileName);
+                    if(search(FILL) == NULL){
+                        exist = 1;
+                        push_front(&newPerson_fil);
+                    }
+                    else{
+                        exist = 0;
+                    }
+                }
+
+                else{
+                flag = 1;
+                cout << "Incorrect input. Try again. ";      
+                }
+            }
+
+            if(exist = 1){
+                cout << "Adding a new person \n";
+            }
+            else if(exist = 0){
+                cout << "Person already exists\n";
+            }
         }
+
         else if (opt == 4){
             // TODO: Complete me!
             cout << "Searching: \n";
@@ -253,6 +304,7 @@ void Network::showMenu(){
             // if found: print person's firstname, lastname, bdate, email, phone using print_person()
             // if not, cout << "Not found! \n";
         }
+
         else if (opt==5){
             // TODO: Complete me!
             cout << "Removing a person \n";
