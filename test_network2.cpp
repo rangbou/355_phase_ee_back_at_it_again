@@ -6,5 +6,5 @@ int main(){
 	string savefile = "save.txt";
 	a.loadDB(filename);
 	a.printDB();
-	a.saveDB(savefile);
+	// a.saveDB(savefile);
 }
