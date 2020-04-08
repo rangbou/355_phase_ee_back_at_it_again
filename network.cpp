@@ -207,6 +207,8 @@ void Network::showMenu(){
         
         // You may need these variables! Add more if you want!
         string fname, lname, fileName, bdate;
+        Person* search_result;
+        int remove_result;
         cout << "\033[2J\033[1;1H";
 
         //COMPLETED
@@ -330,6 +332,7 @@ void Network::showMenu(){
             }
         }
 
+        //COMPLETED
         else if (opt == 4){
             // TODO: Complete me!
             cout << "Searching: \n";
@@ -341,20 +344,40 @@ void Network::showMenu(){
             cin >> bdate;
             // if found: print person's firstname, lastname, bdate, email, phone using print_person()
             // if not, cout << "Not found! \n";
+            search_result = search(fname,lname,bdate);
+            if(search_result == NULL){
+                cout << "Not found! \n";
+            }
+            else{
+                search_result->print_person();
+            }
         }
 
+        //COMPLETED    
         else if (opt==5){
             // TODO: Complete me!
             cout << "Removing a person \n";
             cout << "First name: ";
+            cin >> fname;
             cout << "Last name: ";
+            cin >> lname;
             cout << "Birthdate (M/D/YYYY): ";
+            cin >> bdate;
             // if found, cout << "Remove Successful! \n";
             // if not found: cout << "Person not found! \n";
+            remove_result = remove(fname,lname,bdate);
+            if(remove_result = 0){
+                cout << "Person not found!\n";
+            }
+            else{
+                cout << "Remove Sucessful!\n"
+            }
+
         }
         else if (opt==6){
             // TODO: Complete me!
             cout << "Network Database: \n";
+
         }
         else
             cout << "Nothing matched!\n";
