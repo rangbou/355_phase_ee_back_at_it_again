@@ -15,7 +15,7 @@ Network::Network(string fileName){
     // TODO: complete this method!
     // Implement it in one single line!
     // You may need to implement the load method before this!
-    loadDB(string fileName);
+    loadDB(fileName);
     head = NULL;
     tail = NULL;
     count = 0;
