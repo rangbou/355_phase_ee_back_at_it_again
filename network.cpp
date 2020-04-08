@@ -15,7 +15,7 @@ Network::Network(string fileName){
     // TODO: complete this method!
     // Implement it in one single line!
     // You may need to implement the load method before this!
-    loadDB(string filename);
+    loadDB(fileName);
     head = NULL;
     tail = NULL;
     count = 0;
@@ -175,220 +175,220 @@ bool Network::remove(string fname, string lname, string bdate){
 
 }
 
-void Network::showMenu(){
-    // TODO: Complete this method!
-    // All the prompts are given to you, 
-    // You should add code before, between and after prompts!
+// void Network::showMenu(){
+//     // TODO: Complete this method!
+//     // All the prompts are given to you, 
+//     // You should add code before, between and after prompts!
 
-    int opt;
-    while(1){
-        cout << "\033[2J\033[1;1H";
-        printMe("banner"); // from misc library
+//     int opt;
+//     while(1){
+//         cout << "\033[2J\033[1;1H";
+//         printMe("banner"); // from misc library
 
-        cout << "Select from below: \n";
-        cout << "1. Load network database \n";
-        cout << "2. Save network database \n";
-        cout << "3. Add a new person \n";
-        cout << "4. Search \n";
-        cout << "5. Remove a person \n";
-        cout << "6. Print database \n";
+//         cout << "Select from below: \n";
+//         cout << "1. Load network database \n";
+//         cout << "2. Save network database \n";
+//         cout << "3. Add a new person \n";
+//         cout << "4. Search \n";
+//         cout << "5. Remove a person \n";
+//         cout << "6. Print database \n";
         
-        cout << "\nSelect an option ... ";
+//         cout << "\nSelect an option ... ";
         
-        if (cin >> opt) {
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        } else {
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            cout << "Wrong option! " << endl;
-            return;
-        }
+//         if (cin >> opt) {
+//             cin.clear();
+//             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//         } else {
+//             cin.clear();
+//             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//             cout << "Wrong option! " << endl;
+//             return;
+//         }
         
-        // You may need these variables! Add more if you want!
-        string fname, lname, fileName, bdate;
-        Person* search_result;
-        int remove_result;
-        cout << "\033[2J\033[1;1H";
+//         // You may need these variables! Add more if you want!
+//         string fname, lname, fileName, bdate;
+//         Person* search_result;
+//         int remove_result;
+//         cout << "\033[2J\033[1;1H";
 
-        //COMPLETED
-        if (opt==1){
-            // TODO: Complete me!
-            cout << "Loading network database \n";
-            // TODO: print all the files in this same directory that have ".db" format
-            // Take a look into sample_files.cpp 
+//         //COMPLETED
+//         if (opt==1){
+//             // TODO: Complete me!
+//             cout << "Loading network database \n";
+//             // TODO: print all the files in this same directory that have ".db" format
+//             // Take a look into sample_files.cpp 
 
-            DIR *dir;
-            struct dirent *ent;
-            char targetFolderAddr[] = "./";
+//             DIR *dir;
+//             struct dirent *ent;
+//             char targetFolderAddr[] = "./";
 
-            if ((dir = opendir ("./")) != NULL) { 
-                int flag = 0;
-                char o = '.';
-                char d = 'd';
-                char b = 'b';
+//             if ((dir = opendir ("./")) != NULL) { 
+//                 int flag = 0;
+//                 char o = '.';
+//                 char d = 'd';
+//                 char b = 'b';
 
-                while ((ent = readdir (dir)) != NULL) {
-                string name = ent->d_name;
-                int size = name.length();
-                    if((name[size -3] == o) && (name[size -2] == d) && (name[size -1] == b)){
-                    cout << name << endl;
-                    flag = 1;
-                    }
-                }
+//                 while ((ent = readdir (dir)) != NULL) {
+//                 string name = ent->d_name;
+//                 int size = name.length();
+//                     if((name[size -3] == o) && (name[size -2] == d) && (name[size -1] == b)){
+//                     cout << name << endl;
+//                     flag = 1;
+//                     }
+//                 }
 
-                if(flag == 0){
-                    cout << "Nothing here \n";
-                }
+//                 if(flag == 0){
+//                     cout << "Nothing here \n";
+//                 }
 
-                closedir (dir);
-            } 
+//                 closedir (dir);
+//             } 
 
-            else {
-            /* could not open directory */
-            perror ("No directory!");
-            return 1;
-            }
+//             else {
+//             /* could not open directory */
+//             perror ("No directory!");
+//             return 1;
+//             }
 
-            cout << "Enter the name of the load file: ";
-            cin >> fileName; 
+//             cout << "Enter the name of the load file: ";
+//             cin >> fileName; 
 
-            ifstream infile(fileName.c_str());
+//             ifstream infile(fileName.c_str());
 
-            // If file with name FILENAME does not exist: 
-            if(!infile){
-                cout << "File FILENAME does not exist!" << endl;
-            }
-            // If file is loaded successfully, also print the count of persons in it:
-            else{
-                loadDB(fileName);
-                cout << "Network loaded from " << fileName << " with " << count << " persons \n";
-            }
+//             // If file with name FILENAME does not exist: 
+//             if(!infile){
+//                 cout << "File FILENAME does not exist!" << endl;
+//             }
+//             // If file is loaded successfully, also print the count of persons in it:
+//             else{
+//                 loadDB(fileName);
+//                 cout << "Network loaded from " << fileName << " with " << count << " persons \n";
+//             }
             
-        }
+//         }
 
-        //COMPLETED
-        else if (opt==2){
-            // TODO: Complete me!
-            cout << "Saving network database \n";
-            cout << "Enter the name of the save file: ";
-            cin >> fileName;
-            saveDB(fileName);
-            cout << "Network saved in " << fileName << endl;
-        }
+//         //COMPLETED
+//         else if (opt==2){
+//             // TODO: Complete me!
+//             cout << "Saving network database \n";
+//             cout << "Enter the name of the save file: ";
+//             cin >> fileName;
+//             saveDB(fileName);
+//             cout << "Network saved in " << fileName << endl;
+//         }
 
-        //COMPLETED
-        else if (opt == 3){
-            // TODO: Complete me!
-            // TODO: use push_front, and not push_back 
-            // Add a new person ONLY if it does not exists!
-            string user_option;
-            int flag = 1;
-            int exist;
+//         //COMPLETED
+//         else if (opt == 3){
+//             // TODO: Complete me!
+//             // TODO: use push_front, and not push_back 
+//             // Add a new person ONLY if it does not exists!
+//             string user_option;
+//             int flag = 1;
+//             int exist;
 
-            cout << "We must verify if this Person exists first\n";
-            cout << "First name: ";
-            cin >> fname;
-            cout << "Last name: ";
-            cin >> lname;
-            cout << "Birdate (M/D/YYYY): ";
-            cin >> bdate;
+//             cout << "We must verify if this Person exists first\n";
+//             cout << "First name: ";
+//             cin >> fname;
+//             cout << "Last name: ";
+//             cin >> lname;
+//             cout << "Birdate (M/D/YYYY): ";
+//             cin >> bdate;
 
-            if(search(fname, lname, bdate) == NULL){
-                exist = 1;
-            } 
-            else{
-                exist = 0;
-            }
-            if(exist == 1){
-                while(flag>0){
-                    cout << "Enter 'manual' or 'filename'\n";
-                    cin >> user_option;
+//             if(search(fname, lname, bdate) == NULL){
+//                 exist = 1;
+//             } 
+//             else{
+//                 exist = 0;
+//             }
+//             if(exist == 1){
+//                 while(flag>0){
+//                     cout << "Enter 'manual' or 'filename'\n";
+//                     cin >> user_option;
 
-                    if(user_option == "manual"){
-                        flag = 0;
-                        Person newPersonm_man;
-                        push_front(&newPerson_man);
-                    }
+//                     if(user_option == "manual"){
+//                         flag = 0;
+//                         Person newPersonm_man;
+//                         push_front(&newPerson_man);
+//                     }
 
-                    else if(user_option == "filename"){
-                        flag = 0;
-                        cout << "What is the full filename?\n";
-                        cin >> fileName;
-                        Person newPerson_fil(fileName);
-                        push_front(&newPerson_fil);
-                    }
+//                     else if(user_option == "filename"){
+//                         flag = 0;
+//                         cout << "What is the full filename?\n";
+//                         cin >> fileName;
+//                         Person newPerson_fil(fileName);
+//                         push_front(&newPerson_fil);
+//                     }
 
-                    else{
-                    flag = 1;
-                    cout << "Incorrect input. Try again. ";      
-                    }
-                }
-                cout << "Adding a new person \n";
-            }
+//                     else{
+//                     flag = 1;
+//                     cout << "Incorrect input. Try again. ";      
+//                     }
+//                 }
+//                 cout << "Adding a new person \n";
+//             }
 
-            else if(exist = 0){
-                cout << "Person already exists\n";
-            }
-        }
+//             else if(exist = 0){
+//                 cout << "Person already exists\n";
+//             }
+//         }
 
-        //COMPLETED
-        else if (opt == 4){
-            // TODO: Complete me!
-            cout << "Searching: \n";
-            cout << "First Name: ";
-            cin >> fname;
-            cout << "Last Name: ";
-            cin >> lname;
-            cout << "Birthdate (M/D/YYYY): ";
-            cin >> bdate;
-            // if found: print person's firstname, lastname, bdate, email, phone using print_person()
-            // if not, cout << "Not found! \n";
-            search_result = search(fname,lname,bdate);
-            if(search_result == NULL){
-                cout << "Not found! \n";
-            }
-            else{
-                search_result->print_person();
-            }
-        }
+//         //COMPLETED
+//         else if (opt == 4){
+//             // TODO: Complete me!
+//             cout << "Searching: \n";
+//             cout << "First Name: ";
+//             cin >> fname;
+//             cout << "Last Name: ";
+//             cin >> lname;
+//             cout << "Birthdate (M/D/YYYY): ";
+//             cin >> bdate;
+//             // if found: print person's firstname, lastname, bdate, email, phone using print_person()
+//             // if not, cout << "Not found! \n";
+//             search_result = search(fname,lname,bdate);
+//             if(search_result == NULL){
+//                 cout << "Not found! \n";
+//             }
+//             else{
+//                 search_result->print_person();
+//             }
+//         }
 
-        //COMPLETED    
-        else if (opt==5){
-            // TODO: Complete me!
-            cout << "Removing a person \n";
-            cout << "First name: ";
-            cin >> fname;
-            cout << "Last name: ";
-            cin >> lname;
-            cout << "Birthdate (M/D/YYYY): ";
-            cin >> bdate;
-            // if found, cout << "Remove Successful! \n";
-            // if not found: cout << "Person not found! \n";
-            remove_result = remove(fname,lname,bdate);
-            if(remove_result = 0){
-                cout << "Person not found!\n";
-            }
-            else{
-                cout << "Remove Sucessful!\n"
-            }
+//         //COMPLETED    
+//         else if (opt==5){
+//             // TODO: Complete me!
+//             cout << "Removing a person \n";
+//             cout << "First name: ";
+//             cin >> fname;
+//             cout << "Last name: ";
+//             cin >> lname;
+//             cout << "Birthdate (M/D/YYYY): ";
+//             cin >> bdate;
+//             // if found, cout << "Remove Successful! \n";
+//             // if not found: cout << "Person not found! \n";
+//             remove_result = remove(fname,lname,bdate);
+//             if(remove_result = 0){
+//                 cout << "Person not found!\n";
+//             }
+//             else{
+//                 cout << "Remove Sucessful!\n"
+//             }
 
-        }
-        else if (opt==6){
-            // TODO: Complete me!
-            cout << "Network Database: \n";
+//         }
+//         else if (opt==6){
+//             // TODO: Complete me!
+//             cout << "Network Database: \n";
 
-        }
-        else
-            cout << "Nothing matched!\n";
+//         }
+//         else
+//             cout << "Nothing matched!\n";
         
-        cin.clear();
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "\n\nPress Enter key to go back to main menu ... ";
-        string temp;
-        std::getline (std::cin, temp);
-        cout << "\033[2J\033[1;1H";
-    }
-}
+//         cin.clear();
+//         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//         cout << "\n\nPress Enter key to go back to main menu ... ";
+//         string temp;
+//         std::getline (std::cin, temp);
+//         cout << "\033[2J\033[1;1H";
+//     }
+// }
 
 
