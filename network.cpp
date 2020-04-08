@@ -82,7 +82,7 @@ void Network::printDB(){
     }
 }
 
-
+//COMPELTED
 void Network::saveDB(string filename){
     // TODO: Test
     // Saves the netwrok in file <filename>
@@ -209,7 +209,7 @@ void Network::showMenu(){
         string fname, lname, fileName, bdate;
         cout << "\033[2J\033[1;1H";
 
-        //NOT COMPLETED
+        //COMPLETED
         if (opt==1){
             // TODO: Complete me!
             cout << "Loading network database \n";
@@ -245,13 +245,23 @@ void Network::showMenu(){
             else {
             /* could not open directory */
             perror ("No directory!");
+            return 1;
             }
 
-            cout << "Enter the name of the load file: "; 
+            cout << "Enter the name of the load file: ";
+            cin >> fileName; 
+
+            ifstream infile(fileName.c_str());
+
             // If file with name FILENAME does not exist: 
-            cout << "File FILENAME does not exist!" << endl;
-            // If file is loaded successfully, also print the count of persons in it: 
-            cout << "Network loaded from " << fileName << " with " << count << " persons \n";
+            if(!infile){
+                cout << "File FILENAME does not exist!" << endl;
+            }
+            // If file is loaded successfully, also print the count of persons in it:
+            else{
+                loadDB(fileName);
+                cout << "Network loaded from " << fileName << " with " << count << " persons \n";
+            }
             
         }
 
@@ -324,8 +334,11 @@ void Network::showMenu(){
             // TODO: Complete me!
             cout << "Searching: \n";
             cout << "First Name: ";
+            cin >> fname;
             cout << "Last Name: ";
+            cin >> lname;
             cout << "Birthdate (M/D/YYYY): ";
+            cin >> bdate;
             // if found: print person's firstname, lastname, bdate, email, phone using print_person()
             // if not, cout << "Not found! \n";
         }
