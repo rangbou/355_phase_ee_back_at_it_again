@@ -1,8 +1,3 @@
 break test_network2.cpp:7
 break test_network2.cpp:8
 break test_network2.cpp:9
-break person.cpp:143
-break person.cpp:144
-break person.cpp:145
-break person.cpp:146
-break network.cpp:161

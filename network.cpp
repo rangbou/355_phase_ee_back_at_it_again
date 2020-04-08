@@ -61,7 +61,7 @@ void Network::push_back(Person* newEntry){
     newEntry->next = NULL;
 
     if (tail != NULL)
-        tail->prev = newEntry;
+        tail->next = newEntry;
     else
         head = newEntry;
     

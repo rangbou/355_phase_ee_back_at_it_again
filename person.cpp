@@ -20,6 +20,7 @@ Person::~Person(){
     //delete prev; 
     //delete next;
     // TODO: complete the method!
+    cout << "person destructor"<< endl;
 }
 
 //COMPLETED
