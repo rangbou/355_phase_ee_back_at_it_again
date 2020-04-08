@@ -282,7 +282,7 @@ void Network::showMenu(){
             cout << "Saving network database \n";
             cout << "Enter the name of the save file: ";
             cin >> fileName;
-            saveDB(fileName);
+            saveDB(fileName); //saveDB is weird
             cout << "Network saved in " << fileName << endl;
         }
 
