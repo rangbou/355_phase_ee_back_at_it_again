@@ -24,7 +24,7 @@ Network::Network(string fileName){
 //COMPLETED
 Network::~Network(){
     // TODO: Complete this method
-    // Destructure delete all the Person
+    //Destructure delete all the Person
     Person* current = head; 
     Person* next;
 
@@ -98,12 +98,13 @@ void Network::saveDB(string filename){
     write.open(filename.c_str());
     if(write.is_open()){
         Person *current;
+        Person *temp;
         for(int i = 0; i < count; i++ ){
             if(i == 0){
-                current = this->head;
+                current = this->head; 
             }
             else{
-                current = current->next;
+                current = current->next; //soruce of core dump
             }
         write << current->get_person();
         }
@@ -156,7 +157,7 @@ void Network::loadDB(string filename){
         getline(infile, buff);
         // TODO: use the constructor Person::Person(fname, lname, bdate, email, phone) to modify the following line
         // new Person = Person*newEntry(fname, lname, bdate, email, phone);
-        Person *newEntry;
+        Person *newEntry ;
         newEntry = new Person(fname, lname,bdate,email,phone);
         // adding to linked list. increase count.
         this->push_back(newEntry);
@@ -215,6 +216,8 @@ void Network::showMenu(){
         // You may need these variables! Add more if you want!
         string fname, lname, fileName, bdate;
         Person* search_result;
+        Person* newPerson_man;
+        Person* newPerson_fil;
         int remove_result;
         cout << "\033[2J\033[1;1H";
 
@@ -263,13 +266,14 @@ void Network::showMenu(){
 
             // If file with name FILENAME does not exist: 
             if(!infile){
-                cout << "File FILENAME does not exist!" << endl;
+                 cout << "File FILENAME does not exist!" << endl;
             }
             // If file is loaded successfully, also print the count of persons in it:
             else{
                 loadDB(fileName);
                 cout << "Network loaded from " << fileName << " with " << count << " persons \n";
             }
+
         }
 
         //COMPLETED
@@ -293,13 +297,15 @@ void Network::showMenu(){
 
             cout << "We must verify if this Person exists first\n";
             cout << "First name: ";
-            cin >> fname;
+            std::getline(std::cin,fname);
             cout << "Last name: ";
-            cin >> lname;
+            std::getline(std::cin,lname);
             cout << "Birdate (M/D/YYYY): ";
-            cin >> bdate;
+            std::getline(std::cin,bdate);
 
-            if(search(fname, lname, bdate) == NULL){
+            int te = 1;
+            // if(search(fname, lname, bdate) == NULL){
+            if(te == 1){
                 exist = 1;
             } 
             else{
@@ -307,22 +313,21 @@ void Network::showMenu(){
             }
             if(exist == 1){
                 while(flag>0){
-                    cout << "Enter 'manual' or 'filename'\n";
-                    cin >> user_option;
+                    cout << "Enter 'm' or 'f'\n";
+                    std::getline(std::cin,user_option);
 
-                    if(user_option == "manual"){
+                    if(user_option == "m"){
                         flag = 0;
-                        Person* newPerson_man;
+                        newPerson_man = new Person;
                         push_front(newPerson_man);
                     }
 
-                    else if(user_option == "filename"){
+                    else if(user_option == "f"){
                         flag = 0;
                         cout << "What is the full filename?\n";
-                        cin >> fileName;
-                        Person newPerson_fil(fileName);
-                        Person* newPerson_point = &newPerson_fil;
-                        push_front(newPerson_point);
+                        std::getline(std::cin,fileName);
+                        newPerson_fil = new Person(fileName);
+                        push_front(newPerson_fil);
                     }
 
                     else{
@@ -333,7 +338,60 @@ void Network::showMenu(){
                 cout << "Adding a new person \n";
             }
 
+            else if(exist = 0){
+                cout << "Person already exists\n";
+            }
+        }
 
+        //COMPLETED
+        else if (opt == 4){
+            // TODO: Complete me!
+            cout << "Searching: \n";
+            cout << "First Name: ";
+            cin >> fname;
+            cout << "Last Name: ";
+            cin >> lname;
+            cout << "Birthdate (M/D/YYYY): ";
+            cin >> bdate;
+            // if found: print person's firstname, lastname, bdate, email, phone using print_person()
+            // if not, cout << "Not found! \n";
+            search_result = search(fname,lname,bdate);
+            if(search_result == NULL){
+                cout << "Not found! \n";
+            }
+            else{
+                search_result->print_person();
+            }
+        }
+
+        //COMPLETED    
+        else if (opt==5){
+            // TODO: Complete me!
+            cout << "Removing a person \n";
+            cout << "First name: ";
+            cin >> fname;
+            cout << "Last name: ";
+            cin >> lname;
+            cout << "Birthdate (M/D/YYYY): ";
+            cin >> bdate;
+            // if found, cout << "Remove Successful! \n";
+            // if not found: cout << "Person not found! \n";
+            remove_result = remove(fname,lname,bdate);
+            if(remove_result = 0){
+                cout << "Person not found!\n";
+            }
+            else{
+                cout << "Remove Sucessful!\n";
+            }
+
+        }
+
+        else if (opt==6){
+            // TODO: Complete me!
+            cout << "Network Database: \n";
+        }
+        else
+            cout << "Nothing matched!\n";
         
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -342,7 +400,6 @@ void Network::showMenu(){
         std::getline (std::cin, temp);
         cout << "\033[2J\033[1;1H";
     }
-}
 }
 
 
