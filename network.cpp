@@ -253,7 +253,7 @@ void Network::showMenu(){
             
         }
 
-        //COMPLETED?
+        //COMPLETED
         else if (opt==2){
             // TODO: Complete me!
             cout << "Saving network database \n";
@@ -271,45 +271,48 @@ void Network::showMenu(){
             string user_option;
             int flag = 1;
             int exist;
-            while(flag>0){
-                cout << "Enter 'manual' or 'filename'\n";
-                cin >> user_option;
 
-                if(user_option == "manual"){
-                    flag = 0;
-                    Person newPersonm_man;
-                    if(search(FILL) == NULL){
-                        exist = 1;
-                    push_front(&newPerson_man);
-                    }
-                    else{
-                        exist = 0;
-                    }
-                }
+            cout << "We must verify if this Person exists first\n";
+            cout << "First name: ";
+            cin >> fname;
+            cout << "Last name: ";
+            cin >> lname;
+            cout << "Birdate (M/D/YYYY): ";
+            cin >> bdate;
 
-                else if(user_option == "filename"){
-                    flag = 0;
-                    cout << "What is the full filename?\n";
-                    cin >> fileName;
-                    Person newPerson_fil(fileName);
-                    if(search(FILL) == NULL){
-                        exist = 1;
+            if(search(fname, lname, bdate) == NULL){
+                exist = 1;
+            } 
+            else{
+                exist = 0;
+            }
+            if(exist == 1){
+                while(flag>0){
+                    cout << "Enter 'manual' or 'filename'\n";
+                    cin >> user_option;
+
+                    if(user_option == "manual"){
+                        flag = 0;
+                        Person newPersonm_man;
+                        push_front(&newPerson_man);
+                    }
+
+                    else if(user_option == "filename"){
+                        flag = 0;
+                        cout << "What is the full filename?\n";
+                        cin >> fileName;
+                        Person newPerson_fil(fileName);
                         push_front(&newPerson_fil);
                     }
+
                     else{
-                        exist = 0;
+                    flag = 1;
+                    cout << "Incorrect input. Try again. ";      
                     }
                 }
-
-                else{
-                flag = 1;
-                cout << "Incorrect input. Try again. ";      
-                }
-            }
-
-            if(exist = 1){
                 cout << "Adding a new person \n";
             }
+
             else if(exist = 0){
                 cout << "Person already exists\n";
             }
