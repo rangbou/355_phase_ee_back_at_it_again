@@ -24,7 +24,7 @@ Network::Network(string fileName){
 //COMPLETED
 Network::~Network(){
     // TODO: Complete this method
-    // Destructure delete all the Person
+    Destructure delete all the Person
     Person* current = head; 
     Person* next;
 
@@ -33,6 +33,8 @@ Network::~Network(){
         delete current;
         current = next; 
     }
+    head = NULL;
+    // cout <<  "destructor"<< endl; 
 }
 
 
@@ -151,9 +153,11 @@ void Network::loadDB(string filename){
         // This line is to read the dash line
         getline(infile, buff);
         // TODO: use the constructor Person::Person(fname, lname, bdate, email, phone) to modify the following line
-        Person newEntry(fname, lname, bdate, email, phone);
+        // new Person = Person*newEntry(fname, lname, bdate, email, phone);
+        Person *newEntry ;
+        newEntry = new Person(fname, lname,bdate,email,phone);
         // adding to linked list. increase count.
-        this->push_back(&newEntry);
+        this->push_back(newEntry);
         count++;
     }
 }
@@ -335,6 +339,7 @@ void Network::showMenu(){
         std::getline (std::cin, temp);
         cout << "\033[2J\033[1;1H";
     }
+}
 }
 
 
