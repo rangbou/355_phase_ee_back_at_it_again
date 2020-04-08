@@ -24,7 +24,7 @@ Network::Network(string fileName){
 //COMPLETED
 Network::~Network(){
     // TODO: Complete this method
-    //Destructure delete all the Person
+    // Destructure delete all the Person
     Person* current = head; 
     Person* next;
 
@@ -146,15 +146,17 @@ void Network::loadDB(string filename){
         getline(infile,buff);
         type_em = buff.substr(buff.find('(')+1 , buff.find(')'));
         email = buff.substr(buff.find(')')+2);
+        email = type_em+ " "+email;
         // Reading phone number
         getline(infile, buff);
         type_ph = buff.substr(buff.find('(')+1 , buff.find(')'));
         phone = buff.substr(buff.find(')')+2);
+        phone = type_ph + " "+phone;
         // This line is to read the dash line
         getline(infile, buff);
         // TODO: use the constructor Person::Person(fname, lname, bdate, email, phone) to modify the following line
         // new Person = Person*newEntry(fname, lname, bdate, email, phone);
-        Person *newEntry ;
+        Person *newEntry;
         newEntry = new Person(fname, lname,bdate,email,phone);
         // adding to linked list. increase count.
         this->push_back(newEntry);
