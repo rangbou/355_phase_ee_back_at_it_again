@@ -310,8 +310,8 @@ void Network::showMenu(){
 
                     if(user_option == "manual"){
                         flag = 0;
-                        Person newPerson_man;
-                        push_front(&newPerson_man);
+                        Person* newPerson_man;
+                        push_front(newPerson_man);
                     }
 
                     else if(user_option == "filename"){
@@ -319,7 +319,8 @@ void Network::showMenu(){
                         cout << "What is the full filename?\n";
                         cin >> fileName;
                         Person newPerson_fil(fileName);
-                        push_front(&newPerson_fil);
+                        Person* newPerson_point = &newPerson_fil;
+                        push_front(newPerson_point);
                     }
 
                     else{
