@@ -160,6 +160,7 @@ void Network::loadDB(string filename){
     }
 }
 
+// COMPLETED
 Person* Network::search(string fname, string lname, string bdate){
     // TODO: Complete this method!
     // Search the Network for the given fname, lname, bdate
@@ -180,9 +181,13 @@ Person* Network::search(string fname, string lname, string bdate){
     }
     if (flag == 0){
         cout << fname << " was not found."<<endl;
+        return NULL;
     }
+    // To be sure default is NULL...
+    return NULL;
 }
 
+// Implented just for testing.
 void Network::return_search(string fname, string lname, string bdate){
     // Person *ptr = 
     // cout << fname << lname << bdate<<endl;
@@ -190,12 +195,24 @@ void Network::return_search(string fname, string lname, string bdate){
     // return ptr;
 }
 
+
 bool Network::remove(string fname, string lname, string bdate){
     // TODO: Complete this method! Follow these steps:
     // Create a new person with the the give arguments as you do in search
     // Search if this person exists using search method. If it does not exist just return false! Else, remove the person from LL, make the other connections connected
     // Don't forget to delete allocated memory, change count and returning values!
-
+    Person a(fname,lname,bdate);
+    Person *rmPtr = search(fname, lname,bdate);
+    if(rmPtr == NULL){
+        return false;
+    }
+    else{
+        rmPtr->prev->next = rmPtr->next;
+        rmPtr->next->prev = rmPtr->prev;
+        delete rmPtr;
+        count++;
+        return true;
+    }
 
 }
 
