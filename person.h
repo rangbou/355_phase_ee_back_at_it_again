@@ -23,13 +23,13 @@ public:
     Person();
     ~Person();
     Person(string filename);
-    Person(string f_name, string l_name, string bdate, string email, string phone);
+    Person(string f_name, string l_name, string bdate, string email = "N/A", string phone = "N/A");
 	void print_person();
 	void set_person();
 	void set_person(string filename);
     bool operator==(const Person& rhs);
     bool operator!=(const Person& rhs);
-    string get_person();
+    string get_person(const string& show_contact = "yes");
 };
 
 

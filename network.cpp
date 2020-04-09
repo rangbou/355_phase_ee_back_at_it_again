@@ -94,19 +94,15 @@ void Network::saveDB(string filename){
     // now the one who is responsible for implementing Network should be aware of implementation of Person, not good! You will fix this in PA2. 
 
     // Possible use of iterator?
+    cout << "Saving "+to_string(count)+" people to" + filename + "\n ----------------------------- \n ";
     ofstream write;
     write.open(filename.c_str());
     if(write.is_open()){
-        Person *current;
+        Person *ptr = head;
         Person *temp;
-        for(int i = 0; i < count; i++ ){
-            if(i == 0){
-                current = this->head; 
-            }
-            else{
-                current = current->next; //soruce of core dump
-            }
-        write << current->get_person();
+        while(ptr != NULL){
+            write << ptr->get_person();
+            ptr  = ptr->next;
         }
     }
     else{
@@ -145,23 +141,22 @@ void Network::loadDB(string filename){
         getline(infile, bdate);
         // TODO: read email and phone
         getline(infile,buff);
-        type_em = buff.substr(buff.find('(')+1 , buff.find(')'));
+        type_em = buff.substr(buff.find('(')+1 , buff.find(')')-1);
         email = buff.substr(buff.find(')')+2);
         email = type_em+ " "+email;
         // Reading phone number
         getline(infile, buff);
-        type_ph = buff.substr(buff.find('(')+1 , buff.find(')'));
+        type_ph = buff.substr(buff.find('(')+1, buff.find(')')-1);
         phone = buff.substr(buff.find(')')+2);
         phone = type_ph + " "+phone;
         // This line is to read the dash line
         getline(infile, buff);
         // TODO: use the constructor Person::Person(fname, lname, bdate, email, phone) to modify the following line
         // new Person = Person*newEntry(fname, lname, bdate, email, phone);
-        Person *newEntry ;
+        Person *newEntry;
         newEntry = new Person(fname, lname,bdate,email,phone);
         // adding to linked list. increase count.
         this->push_back(newEntry);
-        count++;
     }
 }
 
@@ -172,6 +167,27 @@ Person* Network::search(string fname, string lname, string bdate){
     // And use == overloaded operator between two persons
     // if found, returns a pointer to it, else returns NULL
     // Don't forget to delete allocated memory.
+    Person a(fname, lname, bdate);
+    Person *ptr = head;
+    bool flag = 0;
+    while(ptr != NULL){
+        if (a.get_person("no") == ptr->get_person("no")){
+            cout << ptr->get_person("no")<< " was found in database."<< endl;
+            flag = 1;
+            return ptr;
+        }
+        ptr = ptr->next;
+    }
+    if (flag == 0){
+        cout << fname << " was not found."<<endl;
+    }
+}
+
+void Network::return_search(string fname, string lname, string bdate){
+    // Person *ptr = 
+    // cout << fname << lname << bdate<<endl;
+    Person *ptr = search(fname, lname, bdate);
+    // return ptr;
 }
 
 bool Network::remove(string fname, string lname, string bdate){

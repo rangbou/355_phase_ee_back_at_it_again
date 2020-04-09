@@ -28,6 +28,7 @@ class Network{
         void loadDB(string filename);
         void printDB();
         void showMenu();
+        void return_search(string fname, string lname, string bdate);
 };
 
 #endif

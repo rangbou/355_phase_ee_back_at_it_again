@@ -20,7 +20,7 @@ Person::~Person(){
     //delete prev; 
     //delete next;
     // TODO: complete the method!
-    cout << "person destructor"<< endl;
+    // cout << "person destructor"<< endl;
 }
 
 //COMPLETED
@@ -148,7 +148,12 @@ void Person::print_person(){
 }
 
 // Implementation for saveDB in network.cpp
-string Person::get_person(){
-    return l_name + ", " + f_name + "\n" + birthdate->get_date() +"\n"+ email->get_contact()+"\n"+ phone->get_contact()+ "\n--------------------\n";
+string Person::get_person(const string& show_contact){
+    if(show_contact == "yes"){
+        return l_name + ", " + f_name + "\n" + birthdate->get_date() +"\n"+ email->get_contact()+"\n"+ phone->get_contact()+ "\n--------------------\n";
+    }
+    else{
+        return l_name + ", " + f_name + "\n" + birthdate->get_date();
+    }
 } 
 
