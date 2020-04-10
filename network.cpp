@@ -4,6 +4,8 @@
 #include "misc.h"
 #include <fstream>
 
+string file_name;
+
 Network::Network(){
     head = NULL;
     tail = NULL;
@@ -94,7 +96,7 @@ void Network::saveDB(string filename){
     // now the one who is responsible for implementing Network should be aware of implementation of Person, not good! You will fix this in PA2. 
 
     // Possible use of iterator?
-    cout << "Saving "+to_string(count)+" people to " + filename + "\n ----------------------------- \n ";
+    cout << "Saving "<< count <<" people to " + filename + "\n-----------------------------\n";
     ofstream write;
     write.open(filename.c_str());
     if(write.is_open()){
@@ -173,14 +175,14 @@ Person* Network::search(string fname, string lname, string bdate){
     bool flag = 0;
     while(ptr != NULL){
         if (a.get_person("no") == ptr->get_person("no")){
-            cout << ptr->get_person("no")<< " was found in database."<< endl;
+            //cout << ptr->get_person("no")<< " was found in database."<< endl;
             flag = 1;
             return ptr;
         }
         ptr = ptr->next;
     }
     if (flag == 0){
-        cout << fname << " was not found."<<endl;
+        //cout << fname << " was not found."<<endl;
         return NULL;
     }
     // To be sure default is NULL...
@@ -294,6 +296,7 @@ void Network::showMenu(){
 
             cout << "Enter the name of the load file: ";
             cin >> fileName; 
+            file_name = fileName;
 
             ifstream infile(fileName.c_str());
 
@@ -315,7 +318,7 @@ void Network::showMenu(){
             cout << "Saving network database \n";
             cout << "Enter the name of the save file: ";
             cin >> fileName;
-            saveDB(fileName); //saveDB is weird
+            saveDB(fileName); 
             cout << "Network saved in " << fileName << endl;
         }
 
@@ -336,9 +339,7 @@ void Network::showMenu(){
             cout << "Birdate (M/D/YYYY): ";
             std::getline(std::cin,bdate);
 
-            int te = 1;
-            // if(search(fname, lname, bdate) == NULL){
-            if(te == 1){
+            if(search(fname, lname, bdate) == NULL){
                 exist = 1;
             } 
             else{
@@ -346,16 +347,16 @@ void Network::showMenu(){
             }
             if(exist == 1){
                 while(flag>0){
-                    cout << "Enter 'm' or 'f'\n";
+                    cout << lname << ", " << fname << " does not exist! \nEnter input type: 'manual' or 'file'\n";
                     std::getline(std::cin,user_option);
 
-                    if(user_option == "m"){
+                    if(user_option == "manual"){
                         flag = 0;
                         newPerson_man = new Person;
                         push_front(newPerson_man);
                     }
 
-                    else if(user_option == "f"){
+                    else if(user_option == "file"){
                         flag = 0;
                         cout << "What is the full filename?\n";
                         std::getline(std::cin,fileName);
@@ -368,10 +369,11 @@ void Network::showMenu(){
                     cout << "Incorrect input. Try again. ";      
                     }
                 }
-                cout << "Adding a new person \n";
+
+                cout << "Adding a new person... Done! \n";
             }
 
-            else if(exist = 0){
+            else if(exist == 0){
                 cout << "Person already exists\n";
             }
         }
@@ -390,9 +392,11 @@ void Network::showMenu(){
             // if not, cout << "Not found! \n";
             search_result = search(fname,lname,bdate);
             if(search_result == NULL){
+                cout << "------------------------------" << endl;
                 cout << "Not found! \n";
             }
             else{
+                cout << "------------------------------" << endl;
                 search_result->print_person();
             }
         }
@@ -410,7 +414,7 @@ void Network::showMenu(){
             // if found, cout << "Remove Successful! \n";
             // if not found: cout << "Person not found! \n";
             remove_result = remove(fname,lname,bdate);
-            if(remove_result = 0){
+            if(remove_result == 0){
                 cout << "Person not found!\n";
             }
             else{
@@ -421,9 +425,10 @@ void Network::showMenu(){
 
         else if (opt==6){
             // TODO: Complete me!
-            cout << "Network Database: \n";
+            cout << "Network Database: " << file_name << "\n";
             printDB();
         }
+
         else
             cout << "Nothing matched!\n";
         
