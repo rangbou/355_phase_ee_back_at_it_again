@@ -180,7 +180,7 @@ Person* Network::search(string fname, string lname, string bdate){
         ptr = ptr->next;
     }
     if (flag == 0){
-        cout << fname << " was not found."<<endl;
+        // cout << fname << " was not found."<<endl;
         return NULL;
     }
     // To be sure default is NULL...
@@ -201,14 +201,26 @@ bool Network::remove(string fname, string lname, string bdate){
     // Create a new person with the the give arguments as you do in search
     // Search if this person exists using search method. If it does not exist just return false! Else, remove the person from LL, make the other connections connected
     // Don't forget to delete allocated memory, change count and returning values!
-    Person a(fname,lname,bdate);
+    // Person a(fname,lname,bdate);
     Person *rmPtr = search(fname, lname,bdate);
     if(rmPtr == NULL){
         return false;
     }
     else{
-        rmPtr->prev->next = rmPtr->next;
-        rmPtr->next->prev = rmPtr->prev;
+        // Proceed to remove.
+        if(rmPtr == head){
+           head = rmPtr->next;
+           rmPtr->next->prev = NULL; 
+
+        }
+        else if(rmPtr ==tail){
+            tail = rmPtr->prev;
+            rmPtr->prev->next = NULL;
+        }
+        else{
+            rmPtr->prev->next = rmPtr->next;
+            rmPtr->next->prev = rmPtr->prev;
+        }
         count--;
         delete rmPtr;
         return true;
@@ -410,7 +422,7 @@ void Network::showMenu(){
             // if found, cout << "Remove Successful! \n";
             // if not found: cout << "Person not found! \n";
             remove_result = remove(fname,lname,bdate);
-            if(remove_result = 0){
+            if(remove_result == 0){
                 cout << "Person not found!\n";
             }
             else{
