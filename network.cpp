@@ -416,6 +416,7 @@ void Network::showMenu(){
         //COMPLETED    
         else if (opt==5){
             // TODO: Complete me!
+            cout << "Removing a person \n";
             cout << "First Name: ";
             std::getline(std::cin,fname);
             cout << "Last Name: ";
@@ -451,5 +452,3 @@ void Network::showMenu(){
         cout << "\033[2J\033[1;1H";
     }
 }
-
-
