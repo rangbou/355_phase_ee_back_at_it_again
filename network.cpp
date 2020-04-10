@@ -94,7 +94,7 @@ void Network::saveDB(string filename){
     // now the one who is responsible for implementing Network should be aware of implementation of Person, not good! You will fix this in PA2. 
 
     // Possible use of iterator?
-    cout << "Saving "+to_string(count)+" people to" + filename + "\n ----------------------------- \n ";
+    cout << "Saving "+to_string(count)+" people to " + filename + "\n ----------------------------- \n ";
     ofstream write;
     write.open(filename.c_str());
     if(write.is_open()){
@@ -209,8 +209,8 @@ bool Network::remove(string fname, string lname, string bdate){
     else{
         rmPtr->prev->next = rmPtr->next;
         rmPtr->next->prev = rmPtr->prev;
+        count--;
         delete rmPtr;
-        count++;
         return true;
     }
 
@@ -422,6 +422,7 @@ void Network::showMenu(){
         else if (opt==6){
             // TODO: Complete me!
             cout << "Network Database: \n";
+            printDB();
         }
         else
             cout << "Nothing matched!\n";

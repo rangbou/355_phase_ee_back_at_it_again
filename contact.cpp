@@ -23,7 +23,7 @@ string Email::get_contact(string style){
     // Note: We have default argument in declaration and not in definition!
     // emaple: Email (USC): tommytrojan@usc.edu
     if(email_addr.size()>0){if (style=="full")
-          return "Email (" + type + "): " + email_addr;
+          return "(" + type + ") " + email_addr;
         else 
             return email_addr;}
     else{
@@ -86,7 +86,7 @@ string Phone::get_contact(string style){
       else{
         string phone_num_formatted = phone_num.substr(0,3)+ "-"+phone_num.substr(2,3)+"-"+phone_num.substr(5,4);
         if (style=="full"){
-          return "Phone (" + type + "): " + phone_num_formatted;
+          return "(" + type + ") " + phone_num_formatted;
         }
         else{
           return phone_num_formatted;
