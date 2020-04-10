@@ -182,7 +182,7 @@ Person* Network::search(string fname, string lname, string bdate){
         ptr = ptr->next;
     }
     if (flag == 0){
-        cout << fname << " was not found."<<endl;
+        //cout << fname << " was not found."<<endl;
         return NULL;
     }
     // To be sure default is NULL...
@@ -395,11 +395,11 @@ void Network::showMenu(){
             // TODO: Complete me!
             cout << "Searching: \n";
             cout << "First Name: ";
-            cin >> fname;
+            std::getline(std::cin,fname);
             cout << "Last Name: ";
-            cin >> lname;
+            std::getline(std::cin,lname);
             cout << "Birthdate (M/D/YYYY): ";
-            cin >> bdate;
+            std::getline(std::cin,bdate);
             // if found: print person's firstname, lastname, bdate, email, phone using print_person()
             // if not, cout << "Not found! \n";
             search_result = search(fname,lname,bdate);
@@ -416,13 +416,12 @@ void Network::showMenu(){
         //COMPLETED    
         else if (opt==5){
             // TODO: Complete me!
-            cout << "Removing a person \n";
-            cout << "First name: ";
-            cin >> fname;
-            cout << "Last name: ";
-            cin >> lname;
+            cout << "First Name: ";
+            std::getline(std::cin,fname);
+            cout << "Last Name: ";
+            std::getline(std::cin,lname);
             cout << "Birthdate (M/D/YYYY): ";
-            cin >> bdate;
+            std::getline(std::cin,bdate);
             // if found, cout << "Remove Successful! \n";
             // if not found: cout << "Person not found! \n";
             remove_result = remove(fname,lname,bdate);
