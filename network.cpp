@@ -182,7 +182,7 @@ Person* Network::search(string fname, string lname, string bdate){
         ptr = ptr->next;
     }
     if (flag == 0){
-        //cout << fname << " was not found."<<endl;
+        cout << fname << " was not found."<<endl;
         return NULL;
     }
     // To be sure default is NULL...
