@@ -32,6 +32,7 @@ public:
     bool operator==(const Person& rhs);
     bool operator!=(const Person& rhs);
     string get_person(const string& show_contact = "yes");
+    string get_id(void);
 };
 
 

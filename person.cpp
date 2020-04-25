@@ -150,7 +150,7 @@ void Person::print_person(){
 	birthdate->print_date("Month D, YYYY");
     email->print();
     phone->print();
-    cout << id << endl;
+    
 }
 
 // Implementation for saveDB in network.cpp
@@ -162,4 +162,9 @@ string Person::get_person(const string& show_contact){
         return l_name + ", " + f_name + " born on " + birthdate->get_date();
     }
 } 
+
+//for printing friend's id
+string Person::get_id(void){
+    return id;
+}
 
