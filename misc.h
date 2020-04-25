@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <ctype.h>
 using namespace std;
 
 void printMe(string type);

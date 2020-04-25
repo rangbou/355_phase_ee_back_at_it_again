@@ -5,6 +5,7 @@
 #include "date.h"
 #include "contact.h"
 #include "fstream"
+#include "misc.h"
 
 class Person{
     friend class Network;
@@ -12,6 +13,7 @@ class Person{
 private:
 	string f_name;
 	string l_name;
+    string id;     //phase 2
 	Date *birthdate;
     Email *email;
     Phone *phone;
