@@ -8,6 +8,7 @@
 using namespace std;
 
 void printMe(string type);
+string IDName(string str1, string str2);
 
 
 #endif
