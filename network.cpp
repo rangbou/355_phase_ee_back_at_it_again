@@ -174,20 +174,20 @@ void Network::loadDB(string filename){
     infile2.open(filename.c_str());
     int counter = 0;
     Person* current = head;
-    cout << "IM HERE \n";
+    //cout << "IM HERE \n";
 
     while(getline(infile2, buff)){
         counter++;
 
         if((counter > 4) && (buff[0] != '-')){
-            cout << "working " << counter << endl;
+            //cout << "working " << counter << endl;
             ptr = search(buff);
             if(ptr != NULL){
                 current->addFriend(ptr);
             }
         }
         else if((counter > 4) && (buff[0] == '-')){
-            cout << "working for -" << counter << endl;
+            //cout << "working for -" << counter << endl;
             counter = 0;
             current = current->next;
         }
