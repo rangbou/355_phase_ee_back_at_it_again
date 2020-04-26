@@ -13,7 +13,6 @@ class Person{
 private:
 	string f_name;
 	string l_name;
-    string id;     //phase 2
 	Date *birthdate;
     Email *email;
     Phone *phone;
@@ -32,7 +31,10 @@ public:
     bool operator==(const Person& rhs);
     bool operator!=(const Person& rhs);
     string get_person(const string& show_contact = "yes");
-    string get_id(void);
+    //phase 2
+    vector<Person*> friends;
+    void addFriend(Person* newFriend);
+    void save_person(ofstream &outfile);
 };
 
 
