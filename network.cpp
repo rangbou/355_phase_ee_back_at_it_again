@@ -299,7 +299,7 @@ void Network::showMenu(){
         cout << "4. Search \n";
         cout << "5. Remove a person \n";
         cout << "6. Print database \n";
-        cout << "7. Add friends: \n";
+        cout << "7. Add friends \n";
         
         cout << "\nSelect an option ... ";
         
@@ -509,7 +509,7 @@ void Network::showMenu(){
                    ptrA->addFriend(ptrB);
                    ptrB->addFriend(ptrA); 
                    // cout << ptrA->get_id() << " and "<< ptrB->get_id() <<" are now friends!"<<endl;
-                    cout << ptrA->friends.back() << " and "<< ptrB-friends.back() <<" are now friends!"<<endl;
+                    cout << ptrA->friends.back() << " and "<< ptrB->friends.back() <<" are now friends!"<<endl;
                 }
                 else{
                     cout << "Person is not found!" << endl;
