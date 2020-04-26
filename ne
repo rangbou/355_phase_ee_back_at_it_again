@@ -1,3 +1,8 @@
+Louis-Dreyfus, Julia Scarlett Elizabeth
+1/13/1961
+Email ((Work)): julia@wh.com
+Phone ((Home)): 310-019-2201
+--------------------
 Aguilar, Abel
 7/27/91
 Email (USC-email)): aaaguila@usc.edu
@@ -372,9 +377,4 @@ Zhou, Zechen
 8/26/93
 Email (USC-email)): zechenzh@usc.edu
 Phone (Cell)): 891-148-2497
---------------------
-Zieminski, Bradley
-1/5/98
-Email (USC-email)): bziemins@usc.edu
-Phone (Cell)): 993-375-6286
 --------------------
