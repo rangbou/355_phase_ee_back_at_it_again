@@ -19,7 +19,6 @@ private:
     // the following to attributes are used in the linked list.
     Person* next;
     Person* prev;
-    vector<Person*> friends;
 
 public: 
     Person();
@@ -32,11 +31,14 @@ public:
     bool operator==(const Person& rhs);
     bool operator!=(const Person& rhs);
     string get_person(const string& show_contact = "yes");
-    string get_id(void);
     //phase 2
     vector<Person*> friends;
     void addFriend(Person* newFriend);
     void save_person(ofstream &outfile);
+    string getFname();
+    string getLname();
+    string getFriends();
+    string get_id();
 };
 
 

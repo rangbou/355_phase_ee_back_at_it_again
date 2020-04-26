@@ -162,11 +162,27 @@ string Person::get_person(const string& show_contact){
     }
 } 
 
-//for printing friend's id
-string Person::get_id(void){
-    return id;
-}
-
 void Person::addFriend(Person* newFriend){
     friends.push_back(newFriend);
+}
+
+string Person::getFriends(){
+    string a;
+    for(int i =0; i < friends.size(); i++){
+        // a = a + IDName(friends[i].getFname(),friends[i].getLname())+ "\n"; 
+        a.append(friends[i]->get_id());
+        a.append("\n"); 
+    }
+    return a;
+}
+
+string Person::getFname(){
+    return f_name;
+}
+string Person::getLname(){
+    return l_name;
+}
+
+string Person::get_id(){
+    return IDName(f_name,l_name);
 }

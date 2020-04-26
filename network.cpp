@@ -153,10 +153,10 @@ void Network::loadDB(string filename){
         phone = type_ph + " "+phone;
         // This line is to read the dash line and ignore the ID of friends
         while(getline(infile, buff)){
-            if(temp[0] != '-'){
+            if(buff[0] != '-'){
                 continue;
             }
-            else{
+            else{        //         
                 break;
             }
         }
@@ -472,7 +472,7 @@ void Network::showMenu(){
         }
 
         else if (opt == 7){
-            cout <<"Please input the ID of two persons";
+            cout <<"Please input the ID of two persons"<<endl;
             string a;
             string b;
             Person* ptrA;
@@ -485,7 +485,8 @@ void Network::showMenu(){
                 if(ptrB != NULL){
                    ptrA->addFriend(ptrB);
                    ptrB->addFriend(ptrA); 
-                   cout << ptrA->get_id() << " and "<< ptrB->get_id() <<" are now friends!"<<endl;
+                   // cout << ptrA->get_id() << " and "<< ptrB->get_id() <<" are now friends!"<<endl;
+                    cout << ptrA->get_id() << " and "<< ptrB->get_id() <<" are now friends!"<<endl;
                 }
                 else{
                     cout << "Person is not found!" << endl;
