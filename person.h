@@ -20,6 +20,7 @@ private:
     // the following to attributes are used in the linked list.
     Person* next;
     Person* prev;
+    vector<Person*> friends;
 
 public: 
     Person();
@@ -33,6 +34,7 @@ public:
     bool operator!=(const Person& rhs);
     string get_person(const string& show_contact = "yes");
     string get_id(void);
+    void addFriend(Person* newFriend);
 };
 
 

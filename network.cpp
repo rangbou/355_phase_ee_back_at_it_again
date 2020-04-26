@@ -189,6 +189,25 @@ Person* Network::search(string fname, string lname, string bdate){
     return NULL;
 }
 
+Person* Network::search(string queryid){
+    Person *ptr = head;
+    bool flag = 0;
+    while(ptr != NULL){
+        if (queryid == ptr->get_id()){
+            //cout << ptr->get_person("no")<< " was found in database."<< endl;
+            flag = 1;
+            return ptr;
+        }
+        ptr = ptr->next;
+    }
+    if (flag == 0){
+        //cout << fname << " was not found."<<endl;
+        return NULL;
+    }
+    // To be sure default is NULL...
+    return NULL;
+}
+
 // Implented just for testing.
 void Network::return_search(string fname, string lname, string bdate){
     // Person *ptr = 
@@ -247,6 +266,7 @@ void Network::showMenu(){
         cout << "4. Search \n";
         cout << "5. Remove a person \n";
         cout << "6. Print database \n";
+        cout << "7. Add friends: \n";
         
         cout << "\nSelect an option ... ";
         
@@ -441,6 +461,33 @@ void Network::showMenu(){
             printDB();
         }
 
+        else if (opt == 7){
+            cout <<"Please input the ID of two persons";
+            string a;
+            string b;
+            Person* ptrA;
+            Person* ptrB;
+            getline(cin, a);
+            ptrA = search(a);
+            if(ptrA != NULL){
+                getline(cin,b);
+                ptrB = search(b);
+                if(ptrB != NULL){
+                   ptrA->addFriend(ptrB);
+                   ptrB->addFriend(ptrA); 
+                   cout << ptrA->get_id() << " and "<< ptrB->get_id() <<" are now friends!"<<endl;
+                }
+                else{
+                    cout << "Person is not found!" << endl;
+                }
+            }
+            else{
+                cout << "Person is not found!" << endl;
+            }
+            
+            
+
+        }
         else
             cout << "Nothing matched!\n";
         

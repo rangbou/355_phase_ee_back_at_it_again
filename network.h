@@ -16,6 +16,7 @@ class Network{
         Person* tail;
         int count; 
         Person* search(string fname, string lname, string bdate);
+        Person* search(string queryid);
 
     public:
         Network();

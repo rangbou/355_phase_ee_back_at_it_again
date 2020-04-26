@@ -172,3 +172,6 @@ string Person::get_id(void){
     return id;
 }
 
+void Person::addFriend(Person* newFriend){
+    friends.push_back(newFriend);
+}
