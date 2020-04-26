@@ -31,7 +31,6 @@ Person::Person(string fname, string lname, string bdate, string email1, string p
 
     f_name = fname;
     l_name = lname;
-    id = IDName(f_name,l_name); //set ID
     birthdate = new Date(bdate);
     // phone and email strings are in full version
     stringstream read_email(email1);
@@ -71,8 +70,6 @@ void Person::set_person(){
 	cout << "Last Name: ";
     std::getline(std::cin,l_name); //set l_name
 
-    id = IDName(f_name,l_name); //set ID
-
     cout << "Birthdate (M/D/YYYY): ";
     std::getline(std::cin,temp);  // pay attention to how we passed argument to the constructor of a new object created dynamically using new command
     birthdate = new Date(temp);  //set birthdate
@@ -105,8 +102,6 @@ void Person::set_person(string filename){
     getline(myfile, f_name);
     getline(myfile, l_name);
     getline(myfile, temp);
-
-    id = IDName(f_name,l_name); //set ID
 
     birthdate = new Date(temp);
 
@@ -153,7 +148,7 @@ void Person::print_person(){
     //print out the id of friends 
     int size = friends.size();
     for(int i = 0; i < size; i++){
-        cout << friends[i]->get_id() << endl;
+        cout << IDName(friends[i]->f_name,friends[i]->l_name) << endl;
     }
 }
 

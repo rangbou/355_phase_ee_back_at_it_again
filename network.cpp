@@ -151,15 +151,25 @@ void Network::loadDB(string filename){
         type_ph = buff.substr(buff.find('(')+1, buff.find(')')-1);
         phone = buff.substr(buff.find(')')+2);
         phone = type_ph + " "+phone;
-        // This line is to read the dash line
-        getline(infile, buff);
+        // This line is to read the dash line and ignore the ID of friends
+        while(getline(infile, buff)){
+            if(temp[0] != '-'){
+                continue;
+            }
+            else{
+                break;
+            }
+        }
         // TODO: use the constructor Person::Person(fname, lname, bdate, email, phone) to modify the following line
         // new Person = Person*newEntry(fname, lname, bdate, email, phone);
         Person *newEntry;
-        newEntry = new Person(fname, lname,bdate,email,phone);
+        newEntry = new Person(fname,lname,bdate,email,phone);
         // adding to linked list. increase count.
         this->push_back(newEntry);
     }
+
+
+
 }
 
 // COMPLETED
