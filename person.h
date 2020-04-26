@@ -19,7 +19,6 @@ private:
     // the following to attributes are used in the linked list.
     Person* next;
     Person* prev;
-    vector<Person*> friends;
 
 public: 
     Person();

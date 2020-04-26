@@ -153,7 +153,7 @@ void Network::loadDB(string filename){
         phone = type_ph + " "+phone;
         // This line is to read the dash line and ignore the ID of friends
         while(getline(infile, buff)){
-            if(temp[0] != '-'){
+            if(buff[0] != '-'){
                 continue;
             }
             else{
@@ -167,7 +167,27 @@ void Network::loadDB(string filename){
         // adding to linked list. increase count.
         this->push_back(newEntry);
     }
+    infile.close();
 
+    ifstream infile2;
+    infile2.open(filename.c_str());
+    int counter = 0;
+    int index = 0;
+
+    //not done
+    while(getline(infile, buff)){
+        counter++;
+        if((counter > 4) && (buff[0] != '-')){
+            ptr = search(buff);
+            if(ptr != NULL){
+                this->addFriend(ptr);
+            }
+        }
+        else if((counter > 4) && (buff[0] == '-')){
+            counter = 0;
+            index++;
+        }
+    }
 
 
 }
