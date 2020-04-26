@@ -477,9 +477,11 @@ void Network::showMenu(){
             string b;
             Person* ptrA;
             Person* ptrB;
+            cout <<"Person 1 ID: ";
             getline(cin, a);
             ptrA = search(a);
             if(ptrA != NULL){
+                cout <<"Person 2 ID: ";
                 getline(cin,b);
                 ptrB = search(b);
                 if(ptrB != NULL){
