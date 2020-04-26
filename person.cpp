@@ -150,7 +150,13 @@ void Person::print_person(){
 	birthdate->print_date("Month D, YYYY");
     email->print();
     phone->print();
-    
+    //print out the id of friends 
+    int size = friends.size();
+
+    for(int i = 0; i < size; i++){
+        cout << friends[i]->get_id() << endl;
+    }
+
 }
 
 // Implementation for saveDB in network.cpp
