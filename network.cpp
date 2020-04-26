@@ -167,8 +167,31 @@ void Network::loadDB(string filename){
         // adding to linked list. increase count.
         this->push_back(newEntry);
     }
+    infile.close();
 
 
+    ifstream infile2;
+    infile2.open(filename.c_str());
+    int counter = 0;
+    Person* current = head;
+    //cout << "IM HERE \n";
+
+    while(getline(infile2, buff)){
+        counter++;
+
+        if((counter > 4) && (buff[0] != '-')){
+            //cout << "working " << counter << endl;
+            ptr = search(buff);
+            if(ptr != NULL){
+                current->addFriend(ptr);
+            }
+        }
+        else if((counter > 4) && (buff[0] == '-')){
+            //cout << "working for -" << counter << endl;
+            counter = 0;
+            current = current->next;
+        }
+    }
 
 }
 
@@ -276,7 +299,7 @@ void Network::showMenu(){
         cout << "4. Search \n";
         cout << "5. Remove a person \n";
         cout << "6. Print database \n";
-        cout << "7. Add friends: \n";
+        cout << "7. Add friends \n";
         
         cout << "\nSelect an option ... ";
         
@@ -488,7 +511,7 @@ void Network::showMenu(){
                    ptrA->addFriend(ptrB);
                    ptrB->addFriend(ptrA); 
                    // cout << ptrA->get_id() << " and "<< ptrB->get_id() <<" are now friends!"<<endl;
-                    cout << ptrA->friends.back() << " and "<< ptrB-friends.back() <<" are now friends!"<<endl;
+                    cout << ptrA->friends.back()->get_id() << " and "<< ptrB->friends.back()->get_id() <<" are now friends!"<<endl;
                 }
                 else{
                     cout << "Person is not found!" << endl;
@@ -498,8 +521,7 @@ void Network::showMenu(){
                 cout << "Person is not found!" << endl;
             }
             
-            
-
+        
         }
         else
             cout << "Nothing matched!\n";
