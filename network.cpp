@@ -509,7 +509,7 @@ void Network::showMenu(){
                    ptrA->addFriend(ptrB);
                    ptrB->addFriend(ptrA); 
                    // cout << ptrA->get_id() << " and "<< ptrB->get_id() <<" are now friends!"<<endl;
-                    cout << ptrA->friends.back() << " and "<< ptrB->friends.back() <<" are now friends!"<<endl;
+                    cout << ptrA->friends.back()->get_id() << " and "<< ptrB->friends.back()->get_id() <<" are now friends!"<<endl;
                 }
                 else{
                     cout << "Person is not found!" << endl;
@@ -519,8 +519,7 @@ void Network::showMenu(){
                 cout << "Person is not found!" << endl;
             }
             
-            
-
+        
         }
         else
             cout << "Nothing matched!\n";
