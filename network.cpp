@@ -400,6 +400,7 @@ void Network::showMenu(){
         cout << "5. Remove a person \n";
         cout << "6. Print database \n";
         cout << "7. Add friends \n";
+        cout << "8. Friends Recommendation \n";
         
         cout << "\nSelect an option ... ";
         
@@ -604,7 +605,6 @@ void Network::showMenu(){
             ptrA = search(a);
             if(ptrA != NULL){
                 cout <<"Person 2 ID: ";
-
                 getline(cin,b);
                 ptrB = search(b);
                 if(ptrB != NULL){
@@ -619,10 +619,16 @@ void Network::showMenu(){
             }
             else{
                 cout << "Person is not found! Cannot add." << endl;
-            }
-            
-        
+            } 
         }
+
+        if(opt==8){
+            int k;
+            cout << "What is the K value? \n";
+            getline(cin,k);
+            friendRecommend(k);
+        }
+
         else
             cout << "Nothing matched!\n";
         
