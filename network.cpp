@@ -294,7 +294,7 @@ void Network::friendRecommend(int k){
     int levels = 0;
     int a;
     int b;
-    vector<vector<Person*>> depth;
+    vector< vector<Person*> > depth;
     // Network visited; 
     // Add u to Q.
     Q.push_back(u);
@@ -328,15 +328,15 @@ void Network::friendRecommend(int k){
     while(Q.empty() == false){
         flag = true;
         X = Q[0];
-        Q.erase(0);
+        Q.erase();
         a = X->friends.size();
-        for(int j = 0; j<a, j++){
+        for(int j = 0; j<a; j++){
             // c2 = c;
             // c = c + a;
             // if(layers < c){
 
             // }
-            for(int i ; i<visited.size()< i++){
+            for(int i ; i<visited.size(); i++){
                 if(X->friends[j] == visited[i]){
                     flag = false; // If any friend was visited flag false.
                 }
@@ -347,8 +347,7 @@ void Network::friendRecommend(int k){
                 count++; // increases everytime a person is added to Q
                 visited.push_back(friends[j]); // Add friend to visited
                 // print.append(y->get_id());
-                // print = print + y->get_id() + " (friend of:"+X+")";
-            
+                // print = print + y->get_id() + " (friend of:"+X+")";  
             }
         }
 
@@ -379,7 +378,7 @@ void Network::friendRecommend(int k){
     //     }
     //     count++;
     //     // ptr = ptr->next;
-    // }
+        }
 }
 
 void Network::showMenu(){
@@ -407,7 +406,8 @@ void Network::showMenu(){
         if (cin >> opt) {
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        } else {
+        } 
+        else {
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             cout << "Wrong option! " << endl;
@@ -605,6 +605,7 @@ void Network::showMenu(){
             ptrA = search(a);
             if(ptrA != NULL){
                 cout <<"Person 2 ID: ";
+
                 getline(cin,b);
                 ptrB = search(b);
                 if(ptrB != NULL){
@@ -623,14 +624,20 @@ void Network::showMenu(){
         }
 
         if(opt==8){
-            int k;
+            string k;
             cout << "What is the K value? \n";
             getline(cin,k);
-            friendRecommend(k);
+            
+            stringstream iss(k); 
+            int k_int; 
+            iss >> k_int;
+             
+            friendRecommend(k_int);
         }
 
-        else
+        else{
             cout << "Nothing matched!\n";
+        }
         
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
