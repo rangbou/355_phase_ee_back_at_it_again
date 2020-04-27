@@ -103,7 +103,7 @@ void Network::saveDB(string filename){
         Person *ptr = head;
         Person *temp;
         while(ptr != NULL){
-            write << ptr->get_person();
+            ptr->save_person(write);
             ptr  = ptr->next;
         }
     }

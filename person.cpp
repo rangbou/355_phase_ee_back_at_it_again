@@ -155,7 +155,8 @@ void Person::print_person(){
 // Implementation for saveDB in network.cpp
 string Person::get_person(const string& show_contact){
     if(show_contact == "yes"){
-        return l_name + ", " + f_name + "\n" + birthdate->get_date() +"\n"+ email->get_contact()+"\n"+ phone->get_contact()+ "\n--------------------\n";
+        // return l_name + ", " + f_name + "\n" + birthdate->get_date() +"\n"+ email->get_contact()+"\n"+ phone->get_contact()+ "\n--------------------\n";
+        return l_name + ", " + f_name + "\n" + birthdate->get_date() +"\n"+ email->get_contact()+"\n"+ phone->get_contact()+ "\n";
     }
     else{
         return l_name + ", " + f_name + " born on " + birthdate->get_date();
@@ -185,4 +186,15 @@ string Person::getLname(){
 
 string Person::get_id(){
     return IDName(f_name,l_name);
+}
+
+void Person::save_person(ofstream &outfile){
+    string save_write = get_person();
+    outfile << save_write;
+
+    int size = friends.size();
+    for(int i = 0; i < size; i++){
+        outfile << IDName(friends[i]->f_name,friends[i]->l_name) << endl;
+    }
+    outfile << "--------------------\n";
 }
