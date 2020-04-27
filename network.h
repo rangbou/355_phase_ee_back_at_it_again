@@ -30,6 +30,9 @@ class Network{
         void printDB();
         void showMenu();
         void return_search(string fname, string lname, string bdate);
+        // Phase 2 
+        void friendRecommend(int k);
+        string BFS(Person* ptr,int k);
 };
 
 #endif

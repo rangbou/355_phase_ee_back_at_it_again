@@ -283,75 +283,71 @@ bool Network::remove(string fname, string lname, string bdate){
 }
 
 void Network::friendRecommend(int k){
+    Person* ptr;
+    ptr = head;
+    while(ptr!=NULL){
+        cout << BFS(ptr,k);
+        ptr = ptr->next;
+    }
+
+}
+
+string Network::BFS(Person* ptr,int k){
     vector<Person*> visited;
     vector<Person*> Q;
-    Person* u;
+    vector<Person*> R;
+    Person* u = ptr; // u represents the starting node
     Person* X;
     bool flag;
     int count = 0;
     string print;
-    int c = 0;
-    int levels = 0;
-    int a;
-    int b;
+    int c = 0; // Rolling total of valid connections (edges that go to unvisited)
+    int ct = 0; // Rolling number of friends from previous depth
+    // c - ct is the number of connections in layers.
+    int levels = 1;
+    int a, b;
     vector<vector<Person*>> depth;
     // Network visited; 
     // Add u to Q.
     Q.push_back(u);
     // Add u to visited;
     visited.push_back(u);
+        while(Q.empty() == false){
+            flag = true;
+            X = Q[0];
+            Q.erase(0);
 
-    // while(Q.empty() == false){
-    //     flag = true;
-    //     X = Q[0];
-    //     // X = Q.front();
-    //     Q.erase(0);
-    //     // c = c + X->friends.size();
-    //     while(count < c){ //
-    //         // Adding all of X's friends to Q and visited.
-    //         for(int j = 0; j<X->friends.size(), j++){
-    //             for(int i ; i<visited.size()< i++){
-    //                 if(X->friends[j] == visited[i]){
-    //                     flag = false; // If any friend was visited flag false.
-    //                 }
-    //             }
-    //             if(flag == true){ // If friend was not yet visited.
-    //                 Q.push_back(friends[j]); // Add friend to Q
-    //                 // count++;
-    //                 visited.push_back(friends[j]); // Add friend to visited
-    //                 // print.append(y->get_id());
-    //                 // print = print + y->get_id() + " (friend of:"+X+")";
-    //             }
-    //         }
+            a = X->friends.size();
+            c = c + a; // Rolling total edges
+            if(count >= c-ct){
+                levels++;
+                count = 0;
+                ct = c;
+            }
 
-    //     }
-    while(Q.empty() == false){
-        flag = true;
-        X = Q[0];
-        Q.erase(0);
-        a = X->friends.size();
-        for(int j = 0; j<a, j++){
-            // c2 = c;
-            // c = c + a;
-            // if(layers < c){
+            for(int j = 0; j<a, j++){
+                b = visited.size();
+                for(int i = 0; i<b; i++){
+                    if(X->friends[j] == visited[i]){
+                        flag = false; // If any friend was visited flag false.
+                        c--; // 
+                    }
+                }
 
-            // }
-            for(int i ; i<visited.size()< i++){
-                if(X->friends[j] == visited[i]){
-                    flag = false; // If any friend was visited flag false.
+                if(flag == true){ // If friend was not yet visited.
+                    Q.push_back(X->friends[j]); // Add friend to Q
+                    count++; // increases everytime a person is added to Q
+                    visited.push_back(X->friends[j]); // Add friend to visited
+                    // print.append(y->get_id());
+                    // print = print + y->get_id() + " (friend of:"+X+")";
+                    if (levels == k){
+                        R.push_back(X->friends[j]);
+                        print.append(X->friends[j]->get_id()+"\n");
+                    }
                 }
             }
-
-            if(flag == true){ // If friend was not yet visited.
-                Q.push_back(friends[j]); // Add friend to Q
-                count++; // increases everytime a person is added to Q
-                visited.push_back(friends[j]); // Add friend to visited
-                // print.append(y->get_id());
-                // print = print + y->get_id() + " (friend of:"+X+")";
-            
-            }
         }
-
+    return print;
 
     // while(Q.empty() == false){
     //     flag = true;
@@ -380,6 +376,7 @@ void Network::friendRecommend(int k){
     //     count++;
     //     // ptr = ptr->next;
     // }
+
 }
 
 void Network::showMenu(){
