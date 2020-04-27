@@ -621,7 +621,7 @@ void Network::showMenu(){
             } 
         }
 
-        if(opt==8){
+        else if(opt==8){
             string k;
             cout << "What is the K value? \n";
             getline(cin,k);
@@ -636,6 +636,7 @@ void Network::showMenu(){
         else{
             cout << "Nothing matched!\n";
         }
+
         
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
