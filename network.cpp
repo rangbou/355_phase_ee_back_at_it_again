@@ -293,11 +293,12 @@ void Network::friendRecommend(int k){
 }
 
 string Network::BFS(Person* ptr,int k){
-    vector<Person*> visited;
-    vector<Person*> Q;
-    vector<Person*> R;
+    vector<Person*> visited; // Vector for remembering which nodes have been visited
+    vector<Person*> Q; // Vector forprocessing order
+    vector<Person*> R; // Vector for storing recommended
     Person* u = ptr; // u represents the starting node
-    Person* X;
+    Person* X; // The current node who is being deleted from front
+    // Other utility variables
     bool flag;
     int count = 0;
     string print;
@@ -306,7 +307,6 @@ string Network::BFS(Person* ptr,int k){
     // c - ct is the number of connections in layers.
     int levels = 1;
     int a, b;
-    vector<vector<Person*>> depth;
     // Network visited; 
     // Add u to Q.
     Q.push_back(u);
@@ -315,7 +315,7 @@ string Network::BFS(Person* ptr,int k){
         while(Q.empty() == false){
             flag = true;
             X = Q[0];
-            Q.erase(0);
+            Q.erase(Q.begin());
 
             a = X->friends.size();
             c = c + a; // Rolling total edges
@@ -325,12 +325,12 @@ string Network::BFS(Person* ptr,int k){
                 ct = c;
             }
 
-            for(int j = 0; j<a, j++){
+            for(int j = 0; j<a; j++){
                 b = visited.size();
-                for(int i = 0; i<b; i++){
+                for(int i = 0; i<b; i++){ // Check friend against all visited.
                     if(X->friends[j] == visited[i]){
                         flag = false; // If any friend was visited flag false.
-                        c--; // 
+                        c--; // C will be subtracted however many visited friends of X there are.
                     }
                 }
 
@@ -620,10 +620,11 @@ void Network::showMenu(){
         }
 
         if(opt==8){
-            int k;
+            string k;
             cout << "What is the K value? \n";
             getline(cin,k);
-            friendRecommend(k);
+
+            friendRecommend(stoi(k));
         }
 
         else
