@@ -495,7 +495,7 @@ void Network::showMenu(){
         }
 
         else if (opt == 7){
-            cout <<"Please input the ID of two persons:"<<endl;
+            cout <<"Please input the ID of first person: ";
             string a;
             string b;
             Person* ptrA;
@@ -503,20 +503,21 @@ void Network::showMenu(){
             getline(cin, a);
             ptrA = search(a);
             if(ptrA != NULL){
+                cout << "\nPlease input the ID of second person: ";
                 getline(cin,b);
                 ptrB = search(b);
                 if(ptrB != NULL){
                    ptrA->addFriend(ptrB);
                    ptrB->addFriend(ptrA); 
                    // cout << ptrA->get_id() << " and "<< ptrB->get_id() <<" are now friends!"<<endl;
-                    cout << ptrA->friends.back()->get_id() << " and "<< ptrB->friends.back()->get_id() <<" are now friends!"<<endl;
+                    cout << "\n" << ptrA->friends.back()->get_id() << " and "<< ptrB->friends.back()->get_id() <<" are now friends!"<<endl;
                 }
                 else{
-                    cout << "Person is not found!" << endl;
+                    cout << "Person is not found! Cannot add." << endl;
                 }
             }
             else{
-                cout << "Person is not found!" << endl;
+                cout << "Person is not found! Cannot add." << endl;
             }
             
         
