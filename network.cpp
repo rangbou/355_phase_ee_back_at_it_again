@@ -282,6 +282,106 @@ bool Network::remove(string fname, string lname, string bdate){
 
 }
 
+void Network::friendRecommend(int k){
+    vector<Person*> visited;
+    vector<Person*> Q;
+    Person* u;
+    Person* X;
+    bool flag;
+    int count = 0;
+    string print;
+    int c = 0;
+    int levels = 0;
+    int a;
+    int b;
+    vector<vector<Person*>> depth;
+    // Network visited; 
+    // Add u to Q.
+    Q.push_back(u);
+    // Add u to visited;
+    visited.push_back(u);
+
+    // while(Q.empty() == false){
+    //     flag = true;
+    //     X = Q[0];
+    //     // X = Q.front();
+    //     Q.erase(0);
+    //     // c = c + X->friends.size();
+    //     while(count < c){ //
+    //         // Adding all of X's friends to Q and visited.
+    //         for(int j = 0; j<X->friends.size(), j++){
+    //             for(int i ; i<visited.size()< i++){
+    //                 if(X->friends[j] == visited[i]){
+    //                     flag = false; // If any friend was visited flag false.
+    //                 }
+    //             }
+    //             if(flag == true){ // If friend was not yet visited.
+    //                 Q.push_back(friends[j]); // Add friend to Q
+    //                 // count++;
+    //                 visited.push_back(friends[j]); // Add friend to visited
+    //                 // print.append(y->get_id());
+    //                 // print = print + y->get_id() + " (friend of:"+X+")";
+    //             }
+    //         }
+
+    //     }
+    while(Q.empty() == false){
+        flag = true;
+        X = Q[0];
+        Q.erase(0);
+        a = X->friends.size();
+        for(int j = 0; j<a, j++){
+            // c2 = c;
+            // c = c + a;
+            // if(layers < c){
+
+            // }
+            for(int i ; i<visited.size()< i++){
+                if(X->friends[j] == visited[i]){
+                    flag = false; // If any friend was visited flag false.
+                }
+            }
+
+            if(flag == true){ // If friend was not yet visited.
+                Q.push_back(friends[j]); // Add friend to Q
+                count++; // increases everytime a person is added to Q
+                visited.push_back(friends[j]); // Add friend to visited
+                // print.append(y->get_id());
+                // print = print + y->get_id() + " (friend of:"+X+")";
+            
+            }
+        }
+
+
+    // while(Q.empty() == false){
+    //     flag = true;
+    //     X = Q[0];
+    //     // X = Q.front();
+    //     Q.erase(0);
+    //     // c = c + X->friends.size();
+    //     while(count < c){ //
+    //         // Adding all of X's friends to Q and visited.
+    //         for(Person* y : X->friends){
+    //             for(Person* i : visited){
+    //                 if(y == i){
+    //                     flag = false; // If any friend was visited flag false.
+    //                 }
+    //             }
+    //             if(flag == true){ // If friend was not yet visited.
+    //                 Q.push_back(y); // Add friend to Q
+    //                 // count++;
+    //                 visited.push_back(y); // Add friend to visited
+    //                 // print.append(y->get_id());
+    //                 // print = print + y->get_id() + " (friend of:"+X+")";
+    //             }
+    //         }
+
+    //     }
+    //     count++;
+    //     // ptr = ptr->next;
+    // }
+}
+
 void Network::showMenu(){
     // TODO: Complete this method!
     // All the prompts are given to you, 
@@ -495,15 +595,16 @@ void Network::showMenu(){
         }
 
         else if (opt == 7){
-            cout <<"Please input the ID of first person: ";
             string a;
             string b;
             Person* ptrA;
             Person* ptrB;
+            cout <<"Person 1 ID: ";
             getline(cin, a);
             ptrA = search(a);
             if(ptrA != NULL){
-                cout << "\nPlease input the ID of second person: ";
+                cout <<"Person 2 ID: ";
+
                 getline(cin,b);
                 ptrB = search(b);
                 if(ptrB != NULL){
