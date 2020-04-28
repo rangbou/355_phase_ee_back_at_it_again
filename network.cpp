@@ -286,7 +286,7 @@ void Network::friendRecommend(int k){
     Person* ptr;
     ptr = head;
     while(ptr!=NULL){
-        cout <<"For "<< ptr->getFname()<<", "<<ptr->getLname() <<":\n" <<BFS(ptr,k)<<endl;
+        cout <<"For "<< ptr->getFname()<<", "<<ptr->getLname() <<":\n" <<BFS(ptr,k);
         cout << "-------------------------------"<<endl;
         ptr = ptr->next;
     }
@@ -595,7 +595,7 @@ void Network::showMenu(){
 
         else if(opt==8){
             string k;
-            cout << "What is the K value? \n";
+            cout << "What is the K value? ";
             getline(cin,k);
             
             stringstream iss(k); 
