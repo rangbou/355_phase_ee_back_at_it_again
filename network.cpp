@@ -286,97 +286,14 @@ void Network::friendRecommend(int k){
     Person* ptr;
     ptr = head;
     while(ptr!=NULL){
-        cout <<"For "<< ptr->getFname()<<", "<<ptr->getLname() <<": " <<BFS(ptr,k) << endl;
-        ptr = ptr->next;
-    }
-
-}
-
-void Network::friendRecommend(){
-    Person* ptr;
-    ptr = head;
-    while(ptr!=NULL){
-        cout << "For "<< ptr->getFname()<<", "<<ptr->getLname() <<": " <<BFS(ptr) << endl;
+        cout <<"For "<< ptr->getFname()<<", "<<ptr->getLname() <<":\n" <<BFS(ptr,k)<<endl;
+        cout << "-------------------------------"<<endl;
         ptr = ptr->next;
     }
 
 }
 
 string Network::BFS(Person* u,int k){
-    // vector<Person*> visited; // Vector for remembering which nodes have been visited
-    // vector<Person*> Q; // Vector forprocessing order
-    // vector<Person*> R; // Vector for storing recommended
-    // Person* u = ptr; // u represents the starting node
-    // Person* X; // The current node who is being deleted from front
-    // // Other utility variables
-    // bool flag;
-    // int count = 1; // Count tracks the number of people processed each layer. It starts at 1 because ptr is already automatically processed.
-    // string print;
-    // int c = 0; // Rolling total of valid connections (edges that go to unvisited)
-    // int ct = 0; // Rolling number of friends from previous depth
-    // // c - ct is the number of connections in layers.
-    // int levels = 1;
-    // int a, b;
-    // int s;
-    // // Network visited; 
-    // // Add u to Q.
-    // Q.push_back(u);
-    // // Add u to visited;
-    // visited.push_back(u);
-    // c = u->friends.size(); // Establish # of 1st degree friends.
-    // while(Q.empty() == false){
-
-    //     if(count > c){
-    //         levels++;
-    //         count = 0;
-    //         ct = c;
-    //         c = 0;
-    //         for(int i = 0; i < ct;i++){ // Calculate friends of friends. Number of friends 1 layers down.
-    //             // Summing all the friends of people in the current layer (current layer goes to ct)
-    //             s = Q[i]->friends.size(); // # friends of friend i.
-    //             c = c + s;
-    //             for(int j = 0; j < s; j++){ // for all friends (j) of friend i, check against all visited. If j was visited decrease c by 1. 
-    //                 for(int  k = 0; k < visited.size();k++){
-    //                     if(Q[i]->friends[j] == visited[k]){
-    //                         c--;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-
-    //     flag = true;
-    //     X = Q.front();
-    //     Q.erase(Q.begin());
-    //     count++; // count is supposed to increase every time a person is processed
-    //     // a = X->friends.size();
-    //     // c = c + a; // Rolling total edges
-
-    //     a = X->friends.size();
-    //     for(int j = 0; j<a; j++){
-    //         b = visited.size();
-    //         for(int i = 0; i<b; i++){ // Check friend against all visited.
-    //             if(X->friends[j] == visited[i]){
-    //                 flag = false; // If any friend was visited flag false.
-    //                 // c--; // C will be subtracted however many visited friends of X there are.
-    //             }
-    //         }
-
-    //         if(flag == true){ // If friend was not yet visited.
-    //             Q.push_back(X->friends[j]); // Add friend to Q
-    //             // count++; // increases everytime a person is added to Q
-    //             visited.push_back(X->friends[j]); // Add friend to visited
-    //             // print.append(y->get_id());
-    //             // print = print + y->get_id() + " (friend of:"+X+")";
-    //             if (levels == k){
-    //                 R.push_back(X->friends[j]);
-    //                 print.append(X->friends[j]->get_id()+", ");
-    //             }
-    //         }
-    //     }
-    // }
-    // return print;
-
     string print;
     int layer_size = 0;
     int layer_number = 0;
@@ -419,7 +336,7 @@ string Network::BFS(Person* u,int k){
                     Q.push_back(*i); 
                     // print.append((*i)->get_id()+" ");
                     if(layer_number==k-1){
-                        print.append((*i)->get_id()+" ");
+                        print.append((*i)->get_id()+"\n");
                     }
                 } 
             }    
@@ -427,57 +344,12 @@ string Network::BFS(Person* u,int k){
         layer_number++;
     }
         
-    
+    if(print.empty()){
+        print.append("No recommendations available.\n");
+    }
     delete [] visited;
     return print; 
 }
-
-// Adapted from Geeks for Geeks and Stack exchange
-string Network::BFS(Person* u) 
-{   
-    string print;
-    // Mark all the vertices as not visited 
-    bool *visited = new bool[this->count]; 
-    for(int i = 0; i < this->count; i++) 
-        visited[i] = false; 
-
-    // Create a queue for BFS 
-    list<Person*> Q; 
-
-    // Mark the current node as visited and enqueue it 
-    visited[u->find_position()] = true; 
-    Q.push_back(u); 
-
-    // 'i' will be used to get all adjacent 
-    // vertices of a vertex 
-    vector<Person*>::iterator i; 
-    // Person* j;
-        while(!Q.empty()) 
-        { 
-            // Dequeue a vertex from queue and print it 
-            Person *X = Q.front(); 
-            //cout << X->get_id() << " "; 
-            Q.pop_front(); 
-            // list<int> depth; //to remember the deapth of each node
-
-            // Get all adjacent vertices of the dequeued 
-            // vertex s. If a adjacent has not been visited, 
-            // then mark it visited and enqueue it 
-
-            for (i = X->friends.begin(); i != X->friends.end(); ++i) 
-            {
-                // j = i;
-                if (!visited[(*i)->find_position()]) 
-                { 
-                    visited[(*i)->find_position()] = true; 
-                    Q.push_back(*i); 
-                    print.append((*i)->get_id()+" ");
-                } 
-
-            } 
-        }
-    return print; 
-} 
 
 void Network::showMenu(){
     // TODO: Complete this method!
@@ -730,7 +602,7 @@ void Network::showMenu(){
             int k_int; 
             iss >> k_int;
              
-            friendRecommend();
+            friendRecommend(k_int);
         }
 
         else{

@@ -32,9 +32,7 @@ class Network{
         void return_search(string fname, string lname, string bdate);
         // phase 2 
         void friendRecommend(int k);
-        void friendRecommend();
         string BFS(Person* u, int k);
-        string BFS(Person* u);
 };
 
 #endif
