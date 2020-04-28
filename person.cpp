@@ -210,5 +210,5 @@ int Person::find_position(){
         count++;
         ptr = ptr->prev;
     }
-    return count;
+    return count-1;
 }
