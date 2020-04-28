@@ -165,6 +165,7 @@ string Person::get_person(const string& show_contact){
 
 void Person::addFriend(Person* newFriend){
     friends.push_back(newFriend);
+    newFriend->friends.push_back(this);
 }
 
 string Person::getFriends(){
@@ -197,4 +198,15 @@ void Person::save_person(ofstream &outfile){
         outfile << IDName(friends[i]->f_name,friends[i]->l_name) << endl;
     }
     outfile << "--------------------\n";
+}
+
+int Person::find_position(){
+    Person* ptr;
+    ptr = this;
+    int count = 0;
+    while(ptr != NULL){
+        count++;
+        ptr = ptr->prev;
+    }
+    return count;
 }

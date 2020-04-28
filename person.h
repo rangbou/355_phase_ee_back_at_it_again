@@ -39,6 +39,7 @@ public:
     string getLname();
     string getFriends();
     string get_id();
+    int find_position();
 };
 
 
