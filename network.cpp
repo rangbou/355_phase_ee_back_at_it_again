@@ -376,38 +376,6 @@ string Network::BFS(Person* ptr,int k){
         }
     }
     return print;
-
-<<<<<<< HEAD
-=======
-    // while(Q.empty() == false){
-    //     flag = true;
-    //     X = Q[0];
-    //     // X = Q.front();
-    //     Q.erase(0);
-    //     // c = c + X->friends.size();
-    //     while(count < c){ //
-    //         // Adding all of X's friends to Q and visited.
-    //         for(Person* y : X->friends){
-    //             for(Person* i : visited){
-    //                 if(y == i){
-    //                     flag = false; // If any friend was visited flag false.
-    //                 }
-    //             }
-    //             if(flag == true){ // If friend was not yet visited.
-    //                 Q.push_back(y); // Add friend to Q
-    //                 // count++;
-    //                 visited.push_back(y); // Add friend to visited
-    //                 // print.append(y->get_id());
-    //                 // print = print + y->get_id() + " (friend of:"+X+")";
-    //             }
-    //         }
-
-    //     }
-    //     count++;
-    //     // ptr = ptr->next;
-    //  }
-
->>>>>>> 767656c329b3eb0a257c3c9c341fd3b68438082a
 }
 
 // Adapted from Geeks for Geeks
