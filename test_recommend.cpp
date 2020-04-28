@@ -10,17 +10,17 @@ int main(){
 	Person f("f","f","02/18/1999");
 	Person g("g","g","02/18/1999");
 	Person h("h","h","02/18/1999");
-	a.addFriend(&c);
-	a.addFriend(&e);
-	c.addFriend(&b);
-	c.addFriend(&d);
-	c.addFriend(&g);
-	c.addFriend(&e);
-	e.addFriend(&f);
-	d.addFriend(&f);
-	f.addFriend(&g);
-	g.addFriend(&h);
-	h.addFriend(&b);
+	a.mutualAddFriend(&c);
+	a.mutualAddFriend(&e);
+	c.mutualAddFriend(&b);
+	c.mutualAddFriend(&d);
+	c.mutualAddFriend(&g);
+	c.mutualAddFriend(&e);
+	e.mutualAddFriend(&f);
+	d.mutualAddFriend(&f);
+	f.mutualAddFriend(&g);
+	g.mutualAddFriend(&h);
+	h.mutualAddFriend(&b);
 
 	z.push_back(&a);
 	z.push_back(&b);

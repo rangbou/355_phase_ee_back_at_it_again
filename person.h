@@ -34,6 +34,7 @@ public:
     //phase 2
     vector<Person*> friends;
     void addFriend(Person* newFriend);
+    void mutualAddFriend(Person* newFriend);
     void save_person(ofstream &outfile);
     string getFname();
     string getLname();

@@ -165,9 +165,11 @@ string Person::get_person(const string& show_contact){
 
 void Person::addFriend(Person* newFriend){
     friends.push_back(newFriend);
+}
+void Person::mutualAddFriend(Person* newFriend){
+    friends.push_back(newFriend);
     newFriend->friends.push_back(this);
 }
-
 string Person::getFriends(){
     string a;
     for(int i =0; i < friends.size(); i++){

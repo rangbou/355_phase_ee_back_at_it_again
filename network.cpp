@@ -651,7 +651,7 @@ void Network::showMenu(){
                 ptrB = search(b);
                 if(ptrB != NULL){
                    ptrA->addFriend(ptrB);
-                   // ptrB->addFriend(ptrA); 
+                   ptrB->addFriend(ptrA); 
                    // cout << ptrA->get_id() << " and "<< ptrB->get_id() <<" are now friends!"<<endl;
                     cout << "\n" << ptrA->friends.back()->get_id() << " and "<< ptrB->friends.back()->get_id() <<" are now friends!"<<endl;
                 }
