@@ -33,7 +33,7 @@ class Network{
         // phase 2 
         void friendRecommend(int k);
         void friendRecommend();
-        string BFS(Person* ptr,int k);
+        string BFS(Person* u, int k);
         string BFS(Person* u);
 };
 
