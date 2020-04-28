@@ -402,12 +402,14 @@ string Network::BFS(Person* u)
     { 
         // Dequeue a vertex from queue and print it 
         Person *X = Q.front(); 
-        cout << X->get_id() << " "; 
+        //cout << X->get_id() << " "; 
         Q.pop_front(); 
+        // list<int> depth; //to remember the deapth of each node
 
         // Get all adjacent vertices of the dequeued 
         // vertex s. If a adjacent has not been visited, 
         // then mark it visited and enqueue it 
+
         for (i = X->friends.begin(); i != X->friends.end(); ++i) 
         {
             // j = i;
@@ -417,6 +419,7 @@ string Network::BFS(Person* u)
                 Q.push_back(*i); 
                 print.append((*i)->get_id()+" ");
             } 
+
         } 
     }
     return print; 
@@ -673,7 +676,7 @@ void Network::showMenu(){
             int k_int; 
             iss >> k_int;
              
-            friendRecommend(k_int);
+            friendRecommend();
         }
 
         else{
