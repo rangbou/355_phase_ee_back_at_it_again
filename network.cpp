@@ -377,6 +377,37 @@ string Network::BFS(Person* ptr,int k){
     }
     return print;
 
+<<<<<<< HEAD
+=======
+    // while(Q.empty() == false){
+    //     flag = true;
+    //     X = Q[0];
+    //     // X = Q.front();
+    //     Q.erase(0);
+    //     // c = c + X->friends.size();
+    //     while(count < c){ //
+    //         // Adding all of X's friends to Q and visited.
+    //         for(Person* y : X->friends){
+    //             for(Person* i : visited){
+    //                 if(y == i){
+    //                     flag = false; // If any friend was visited flag false.
+    //                 }
+    //             }
+    //             if(flag == true){ // If friend was not yet visited.
+    //                 Q.push_back(y); // Add friend to Q
+    //                 // count++;
+    //                 visited.push_back(y); // Add friend to visited
+    //                 // print.append(y->get_id());
+    //                 // print = print + y->get_id() + " (friend of:"+X+")";
+    //             }
+    //         }
+
+    //     }
+    //     count++;
+    //     // ptr = ptr->next;
+    //  }
+
+>>>>>>> 767656c329b3eb0a257c3c9c341fd3b68438082a
 }
 
 // Adapted from Geeks for Geeks
@@ -448,7 +479,8 @@ void Network::showMenu(){
         if (cin >> opt) {
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        } else {
+        } 
+        else {
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             cout << "Wrong option! " << endl;
@@ -646,6 +678,7 @@ void Network::showMenu(){
             ptrA = search(a);
             if(ptrA != NULL){
                 cout <<"Person 2 ID: ";
+
                 getline(cin,b);
                 ptrB = search(b);
                 if(ptrB != NULL){
@@ -663,16 +696,22 @@ void Network::showMenu(){
             } 
         }
 
-        if(opt==8){
+        else if(opt==8){
             string k;
             cout << "What is the K value? \n";
             getline(cin,k);
-            friendRecommend(stoi(k));
+            
+            stringstream iss(k); 
+            int k_int; 
+            iss >> k_int;
+             
+            friendRecommend(k_int);
         }
 
         else{
-            cout << "Nothing you typed matched!\n";
+            cout << "Nothing matched!\n";
         }
+
         
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
