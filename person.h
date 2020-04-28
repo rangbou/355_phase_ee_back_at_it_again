@@ -41,6 +41,7 @@ public:
     string getFriends();
     string get_id();
     int find_position();
+    int checkFriend(Person* newFriend);
 };
 
 

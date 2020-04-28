@@ -579,10 +579,16 @@ void Network::showMenu(){
                 getline(cin,b);
                 ptrB = search(b);
                 if(ptrB != NULL){
-                   ptrA->addFriend(ptrB);
-                   ptrB->addFriend(ptrA); 
-                   // cout << ptrA->get_id() << " and "<< ptrB->get_id() <<" are now friends!"<<endl;
-                    cout << "\n" << ptrA->friends.back()->get_id() << " and "<< ptrB->friends.back()->get_id() <<" are now friends!"<<endl;
+                    if(ptrA->checkFriend(ptrB) == 0){
+                        ptrA->addFriend(ptrB);
+                        ptrB->addFriend(ptrA); 
+                        // cout << ptrA->get_id() << " and "<< ptrB->get_id() <<" are now friends!"<<endl;
+                        cout << "\n" << ptrA->friends.back()->get_id() << " and "<< ptrB->friends.back()->get_id() <<" are now friends!"<<endl;
+                    }
+                    else{
+                        cout << "\n" << ptrA->friends.back()->get_id() << " and "<< ptrB->friends.back()->get_id() <<" are already friends!"<<endl;
+            
+                    }
                 }
                 else{
                     cout << "Person is not found! Cannot add." << endl;

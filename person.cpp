@@ -166,6 +166,19 @@ string Person::get_person(const string& show_contact){
 void Person::addFriend(Person* newFriend){
     friends.push_back(newFriend);
 }
+
+int Person::checkFriend(Person* newFriend){
+    int size = friends.size();
+    int flag = 0;
+    for(int i = 0; i < size; i++){
+        if(newFriend->get_id() == friends[i]->get_id()){
+            flag = 1;
+            break;
+        }
+    }
+    return flag;
+}
+
 void Person::mutualAddFriend(Person* newFriend){
     friends.push_back(newFriend);
     newFriend->friends.push_back(this);
