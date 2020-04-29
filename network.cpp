@@ -586,8 +586,7 @@ void Network::showMenu(){
                         cout << "\n" << ptrA->friends.back()->get_id() << " and "<< ptrB->friends.back()->get_id() <<" are now friends!"<<endl;
                     }
                     else{
-                        cout << "\n" << ptrA->friends.back()->get_id() << " and "<< ptrB->friends.back()->get_id() <<" are already friends!"<<endl;
-            
+                        cout << "\n" << ptrA->get_id() << " and "<< ptrB->get_id() <<" are already friends!"<<endl;            
                     }
                 }
                 else{
